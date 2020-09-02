@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   root 'home#top'
 	get 'about' => 'home#about'
 
-	devise_for :end_users
+	devise_for :end_users, controllers: {
+    sessions: 'end_users/sessions',
+    passwords: 'end_users/passwords',
+    registrations: 'end_users/registrations'
+  }
 
 	resources :items, only: [:index, :show]
 	resources :deliveries, except: [:new, :show]
@@ -15,7 +19,11 @@ Rails.application.routes.draw do
 	resources :cart_items, only: [:index, :create, :destroy, :update]
 	delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
 
   namespace :admins do
     root 'home#top'
