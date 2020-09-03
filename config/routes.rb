@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     registrations: 'end_users/registrations'
   }
 
+  resources :genres, only: [:show]
 	resources :items, only: [:index, :show]
 	resources :deliveries, except: [:new, :show]
 	resources :orders, only: [:index, :show, :new, :create]
