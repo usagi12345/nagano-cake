@@ -19,7 +19,6 @@ class Admins::ItemsController < ApplicationController
 
   def edit
   end
-end
 
  private
 
