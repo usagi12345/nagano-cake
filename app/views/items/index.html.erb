@@ -9,26 +9,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% @genres.each do |genre| %>
 					<tr>
 						<td>
-							<%=link_to "ケーキ", '#' %>
+							
+							<%= link_to genre.name, items_path %>
+							<% end %>
+							
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<%=link_to "焼き菓子", '#' %>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<%=link_to "プリン", '#' %>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<%=link_to "キャンディ", '#' %>
-						</td>
-					</tr>
+					
+					
 				</tbody>
 			</table>
 		</div>
