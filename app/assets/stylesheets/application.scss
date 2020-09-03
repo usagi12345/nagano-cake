@@ -21,3 +21,20 @@
 		margin: 0;
 		box-sizing:border-box;
 }
+html, body {
+	height: 100%;
+}
+.wrapper {
+	width: 100%;
+	position: relative;
+	min-height: 100%;
+}
+.inner {
+	padding-bottom: 70px;
+}
+footer {
+	height: 70px;
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+}
