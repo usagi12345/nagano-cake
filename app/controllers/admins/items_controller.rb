@@ -4,6 +4,8 @@ class Admins::ItemsController < ApplicationController
   end
 
   def show
+  	@item = Item.find(params[:id])
+    @price_tax = @item.price_nontax.to_i*1.1
   end
 
   def new
@@ -18,6 +20,18 @@ class Admins::ItemsController < ApplicationController
   end
 
   def edit
+  	@item = Item.find(params[:id])
+  	@genres = Genre.all
+  end
+
+  def update
+  	@item = Item.find(params[:id])
+  	@genres = Genre.all
+  	if @item.save
+  		redirect_to admins_items_path
+  	else
+  		render :edit
+  	end
   end
 
  private
