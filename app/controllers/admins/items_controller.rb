@@ -26,3 +26,4 @@ end
  def item_params
  	params.require(:item).permit(:genre_id, :name, :explanation, :price_nontax, :image, :sale_status)
  end
+end
