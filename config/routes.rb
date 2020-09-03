@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root 'home#top'
 	get 'about' => 'home#about'
 
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :genres, only: [:show]
 	resources :items, only: [:index, :show]
+  resources :genres, only: [:show]
 	resources :deliveries, except: [:new, :show]
 	resources :orders, only: [:index, :show, :new, :create]
 	post 'orders/confirm' => 'orders#confirm'
