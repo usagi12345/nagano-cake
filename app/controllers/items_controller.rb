@@ -7,4 +7,4 @@ class ItemsController < ApplicationController
 
   	@item = Item.find(parmit[:id])
   end
-
+end
