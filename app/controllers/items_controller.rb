@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-  	@item = Item.find(parmit[:id])
+  	@item = Item.find(params[:id])
   end
 
   def new
