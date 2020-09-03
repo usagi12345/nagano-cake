@@ -2,9 +2,7 @@
 	<div class="row">
 		<div class="col-md-3">
 		<!-- ジャンルサイドバー設置 -->
-		<%= genres.each do |genre| %>
-		<%= linnk_to genre.name %>
-		<% end %>
+
 	</div>
 	<div class="col-md-5">
 		<%= attachment_image_tag @item, :image, :fill,100, 100, format: 'jpeg' %>
@@ -14,13 +12,7 @@
 		<h2><%= @item.explanation %></h2>
 		<h3>¥<%= @item.price_nontax*1.1 %>(税込み)</h3>
 
-		<%= form_for(@cart_item, url: cart_items_path) do |f| %>
-		<%= f.hidden_field :item_id, value: @item.id %>
-		<!-- hiddenを調べる -->
-		<%= f.select :quantity, option_for_select((1..10).to_a), include_blank: "個数選択"
-		# quantity(数量)のカラムが必要？
-		<%= f.submit 'カートに入れる', class: 'btn btn-primary'　%>
-		<% end %>
+
 	</div>
 </div>
 </div>
