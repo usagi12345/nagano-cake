@@ -25,6 +25,11 @@
 html, body {
 	height: 100%;
 }
+body {
+	background-image: url(haikei1.jpg);
+	background-size: cover;
+	background-position: center;
+}
 .wrapper {
 	width: 100%;
 	position: relative;
@@ -35,11 +40,20 @@ html, body {
 	flex-direction: column;
 	min-height: 100vh;
 }
-.inner {
-	padding-bottom: 70px;
+header {
+	position: relative;
+}
+.login_name {
+	color: white;
+	line-height: 50px;
+	position: absolute;
+	right: 10px;
+}
+main {
+background: rgba(255,255,255,0.8);
 }
 footer {
-	height: 70px;
+	height: 50px;
 	background-color: black;
 	margin-top: auto;
 }
