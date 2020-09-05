@@ -27,7 +27,7 @@ class Admins::ItemsController < ApplicationController
   def update
   	@item = Item.find(params[:id])
   	@genres = Genre.all
-  	if @item.save
+  	if @item.update(item_params)
   		redirect_to admins_items_path
   	else
   		render :edit

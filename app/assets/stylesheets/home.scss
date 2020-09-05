@@ -1,6 +1,6 @@
 .top-visual {
-  height: 500px;
-  width: 600px;
+  height: 600px;
+  width: 750px;
   background-image: image-url('top.jpg');
   background-size: cover;
   background-position: center;
@@ -13,8 +13,41 @@
 }
 
 .top-visual-text {
-  padding: 100px 100px;
+  padding: 90px 100px;
 }
 
+.genre-area {
+  background-color: #FFFAFA;
+  width: 220px;
+  border: 2px solid #FFE4E1;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
 
+.genre-title {
+  color: #fff;
+  background-color: #F08080;
+  font-weight: bold;
+  padding: 10px 15px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
 
+.genre-area ul {
+  list-style: none;
+}
+
+.genre-area li a {
+  color: #F08080;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+  height: 50px;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.genre-area li a:hover {
+  background-color: #FFF0F5;
+}

@@ -1,39 +1,40 @@
-<!-- ジャンル検索のサイドバー入力 -->
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-7 col-md-offset-3">
-      <div class="top-visual">
-        <div class="top-visual-content">
-          <div class="top-visual-text">
-            <h2>ようこそ、NaganoCakeへ！</h2>
-            <p>このサイトは、ケーキ販売のECサイトになります。</p>
-            <p>会員でない方も商品の閲覧はできますが、</p>
-            <p>購入には会員登録が必要になります。</p>
+<div class="row">
+  <!-- ジャンル検索サイドバー -->
+  <%= render 'items/genre_sidebar', genres: @genres %>
+  <!-- メインビジュアル -->
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-9 col-md-offset-1">
+        <div class="top-visual">
+          <div class="top-visual-content">
+            <div class="top-visual-text">
+              <h1>ようこそ、NaganoCakeへ！</h1><br>
+              <h4>このサイトは、ケーキ販売のECサイトになります。</h4><br>
+              <h4>会員でない方も商品の閲覧はできますが、</h4><br>
+              <h4>購入には会員登録が必要になります。</h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-7 col-md-offset-3">
-      <h3><strong>オススメ商品</strong></h3>
-
-      <!-- 以下に商品画像、値段 -->
-      <% @random.each do |item| %>
-        <table class="table table-hover">
-          <tbody>
-            <tr><%= attachment_image_tag item, :image, format: 'jpeg', size: "150x120" %></tr>
-            <tr><%= item.name %></tr>
-            <tr>¥ <%= item.price_nontax %>（税抜）</tr>    <!-- 税込価格 -->
-          </tbody>
-        </table>
-      <% end %>
-
-      <p class="text-right">
-        <%= link_to "もっと見る　>", items_path %>
-      </p>
-
+    <br>
+    <!-- おすすめ商品 -->
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3><strong>オススメ商品</strong></h3>
+        <div class="row">
+          <% @random.each do |item| %>
+            <div class="col-md-3">
+              <%= link_to item_path(item) do %>
+                <%= attachment_image_tag item, :image, format: 'jpeg', size:"170x140" %>
+                <p><%= item.name %></p>
+              <% end %>
+              <p>￥<%= item.price_nontax %>(税抜)</p>
+            </div>
+          <% end %>
+          <p class="text-right"><%= link_to "もっと見る >", items_path %></p>
+        </div>
+      </div>
     </div>
   </div>
+</div>

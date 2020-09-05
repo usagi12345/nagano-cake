@@ -1,0 +1,15 @@
+<div class="col-md-2">
+  <nav class="genre-area">
+    <div class="genre-title"><%= image_tag('icon2.png') %> ジャンル検索</div>
+    <ul>
+      <% genres.each do |genre| %>
+        <li>
+          <%= link_to genre.name, genre_path(genre) %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <div>
+    <%= image_tag('usagi4.png', size: "240x270") %>
+  </div>
+</div>
