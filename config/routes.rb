@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   }
 
   resources :genres, only: [:show]
-	resources :items, only: [:index, :show]
+	resources :items, only: [:index, :show] do
+    resources :cart_items, only: [:index, :create, :destroy, :update]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  end
   resources :genres, only: [:show]
 	resources :deliveries, except: [:new, :show]
 	resources :orders, only: [:index, :show, :new, :create]
@@ -19,8 +22,6 @@ Rails.application.routes.draw do
 	resource :end_users, only: [:show, :edit, :update]
 	get 'end_users/withdraw' => 'end_users#withdraw'
 	patch 'end_users/out' => 'end_users#out'
-	resources :cart_items, only: [:index, :create, :destroy, :update]
-	delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
