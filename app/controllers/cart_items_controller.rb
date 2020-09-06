@@ -20,7 +20,6 @@ class CartItemsController < ApplicationController
       end
     else
       amount = @current_item.number + params[:cart_item][:number].to_i
-      binding.pry
       @current_item.update(number: amount)
       redirect_to cart_items_path
     end
