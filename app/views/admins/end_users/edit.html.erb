@@ -1,53 +1,108 @@
-<h2>会員編集</h2>
 <div class="row">
+  <div class="col-md-7 col-lg-offset-1">
+    <h2><%= @user.first_name %><%= @user.last_name %>さんの編集</h2>
+  </div>
+</div>
   <%= form_for(@user, url: admins_end_user_path(@user)) do |f| %>
-        <div class="col-md-8 form-inline">
-          <div>
-            会員ID　<%= @user.id %>
+    <div class="row">
+      <div class="col-md-7 col-md-offset-1">
+        <div class="form-group row">
+          <label class="col-md-3 control-label">会員ID</label>
+            <div class="col-md-3">
+              <%= @user.id %>
+            </div>
           </div>
-          <div>
-            <%= f.label :first_name, "氏名" %>
-            <%= f.text_field :first_name %>
-          </div>
-          <div>
-            <%= f.label :last_name, "" %>
-            <%= f.text_area :last_name %>
-          </div>
-          <div>
-            <%= f.label :first_name_kana, "フリガナ" %>
-            <%= f.text_field :first_name_kana %>
-          </div>
-          <div>
-            <%= f.label :last_name_kana, "" %>
-            <%= f.text_area :last_name_kana %>
-          </div>
-          <div>
-            <%= f.label :postal_code, "郵便番号" %>
-            <%= f.text_field :postal_code  %>
-          </div>
-          <div>
-            <%= f.label :address, "住所" %>
-            <%= f.text_field :address  %>
-          </div>
-          <div>
-            <%= f.label :phone, "電話番号" %>
-            <%= f.text_field :phone  %>
-          </div>
-          <div>
-            <%= f.label :email, "メールアドレス" %>
-            <%= f.text_field :email  %>
-          </div>
-          <div>
-          <%= form_with(model: user, local: true) do |form| %>
-          <%= form.radio_button :gender, :male %>
-          <%= form.label :gender, "男性", {value: :male, style: "display: inline-block;"} %>
-          <%= form.radio_button :gender, :female %>
-          <%= form.label :gender, "女性", {value: :female, style: "display: inline-block;"} %>
         </div>
-<% end %>
-    </div>
-    <div>
-      <%= f.submit "変更を保存", class: "btn btn-primary " %>
-    </div>
-  <% end %>
+      </div>
+      <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+          <div class="form-group row">
+            <label class="col-md-3 control-label">氏名</label>
+            <div class="col-md-3">
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+            </div>
+            <div class="col-md-3">
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+          <div class="form-group row">
+            <label class="col-md-3 control-label">フリガナ</label>
+              <div class="col-md-3">
+                <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "form-control" %>
+              </div>
+              <div class="col-md-3">
+                <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7 col-md-offset-1">
+            <div class="form-group row">
+              <label class="col-md-3 control-label">郵便番号</label>
+              <div class="col-md-3">
+                <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_cade", class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7 col-md-offset-1">
+            <div class="form-group row">
+              <label class="col-md-3 control-label">住所</label>
+            <div class="col-md-7">
+                <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+            </div>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+              <div class="form-group row">
+                <label class="col-md-3 control-label">電話番号</label>
+                <div class="col-md-3">
+                  <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+              <div class="form-group row">
+                <label class="col-md-3 control-label">メールアドレス</label>
+                <div class="col-md-5">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+              <div class="form-group row">
+                <label class="col-md-3 control-label">会員ステータス</label>
+                <div class="col-md-5">
+                  <div class="radio-inline">
+                    <%= f.radio_button :is_deleted, :有効, checked: "checked" %>
+                    <%= f.label :有効 %>
+                  </div>
+                  <div class="radio-inline">
+                    <%= f.radio_button :is_deleted, :退会済み %>
+                    <%= f.label :退会済み %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+              <div class="form-group row">
+                <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+    <% end %>
 </div>

@@ -1,42 +1,53 @@
   <div class="row">
-    <h1>会員詳細</h1>
+    <div class="col-md-7 col-lg-offset-1">
+      <h2><%= @user.first_name %><%= @user.last_name %>さんの詳細</h2>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9 col-md-offset-1 ">
       <table class="table text-nowrap">
         <tbody>
           <tr>
-            <td>顧客ID</td>
-            <td><%= @user.id %></td>
+            <td width="170">顧客ID</td>
+            <td>
+              <%= @user.id %>
+              <button type="button", style="background:blue; color:white; border: none; font-size: 10pt;"><%= @user.is_deleted %>会員</button>
+            </td>
           </tr>
           <tr>
-            <td>氏名</td>
-            <td><%= @user.first_name %></td>
+            <td width="170">氏名</td>
+            <td><%= @user.first_name %> <%= @user.last_name %></td>
           </tr>
           <tr>
-            <td>フリナガ</td>
-            <td><%= @user.first_name_kana %></td>
+            <td width="170">フリナガ</td>
+            <td><%= @user.first_name_kana %> <%= @user.last_name_kana %></td>
           </tr>
           <tr>
-            <td>郵便番号</td>
+            <td width="170">郵便番号</td>
             <td><%= @user.postal_code %></td>
           </tr>
           <tr>
-            <td>住所</td>
+            <td width="170">住所</td>
             <td><%= @user.address %></td>
           </tr>
           <tr>
-            <td>電話番号</td>
+            <td width="170">電話番号</td>
             <td><%= @user.phone %></td>
           </tr>
           <tr>
-            <td>メールアドレス</td>
+            <td width="170">メールアドレス</td>
             <td><%= @user.email %></td>
           </tr>
         </tbody>
       </table>
+    <div class="text-left">
+      <div class="col-md-2">
+        <%= link_to "編集する", edit_admins_end_user_path(@user), class: "btn btn-primary" %>
+      </div>
+      <div>
+        <div class="col-md-2">
+        <%= link_to "注文履歴一覧に戻る", admins_orders_path, class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
-    <div class="text-right">
-  <%= link_to "編集する", edit_admins_end_user_path(@user), class: "btn btn-default" %>
-</div>
+  </div>
