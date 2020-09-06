@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 	resources :orders, only: [:index, :show, :new, :create]
 	post 'orders/confirm' => 'orders#confirm'
 	get 'orders/thanks' => 'orders#thanks'
-	resource :end_users, only: [:show, :edit, :update]
+	resource :end_users, only: [:show, :update]
+  get 'end_users/end_users/edit' => 'end_users#edit'
 	get 'end_users/withdraw' => 'end_users#withdraw'
 	patch 'end_users/out' => 'end_users#out'
 	resources :cart_items, only: [:index, :create, :destroy, :update]

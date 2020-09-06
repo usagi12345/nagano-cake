@@ -7,7 +7,6 @@ class EndUser < ApplicationRecord
 	validates :last_name_kana, presence: true
 	validates :postal_code, presence: true
 	validates :address, presence: true
-	validates :is_deleted, presence: true
 	validates :phone, presence: true
 
   devise :database_authenticatable, :registerable,
