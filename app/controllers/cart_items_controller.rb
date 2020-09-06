@@ -1,56 +1,54 @@
 class CartItemsController < ApplicationController
 
   before_action :authenticate_end_user!
-  before_action :set_item, only: [:create, :destroy, :destroy_all]
-  before_action :set_user
-  before_action :set_cart
 
   def index
-     @items = @cart_item.items
+    @end_user = current_end_user
+    @cart_items = @end_user.cart_items.all
   end
 
   def create
-  	@item = @cart_item.items.build(item_id: params[:item_id]) if @item.blank?
-    @item.number += params[:number].to_i
-    if @item.save
-      redirect_to current_cart
+    @end_user = current_end_user
+    @cart_item = current_end_user.cart_items.build(cart_item_params)
+    @current_item = CartItem.find_by(item_id: @cart_item.item_id, end_user_id: @cart_item.end_user.id)
+    if @current_item.nil?
+      if @cart_item.save
+        redirect_to cart_items_path
+      else
+        @carts_items = @end_user.cart_items.all
+        render 'index'
+      end
     else
-      redirect_to controller: "items", action: "show"
+      amount = @current_item.number + params[:cart_item][:number].to_i
+      binding.pry
+      @current_item.update(number: amount)
+      redirect_to cart_items_path
     end
   end
 
   def destroy
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to current_cart
+    redirect_to cart_items_path
   end
 
   def update
-    @cart_item.update(cart_item_params)
-    redirect_to current_cart
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to cart_items_path
+    end
   end
 
   def destroy_all
+    @end_user = current_end_user
     @end_user.cart_items.destroy_all
-    redirect_to current_cart
+    redirect_to cart_items_path
   end
 
+
   private
-    def set_user
-      @end_user = current_end_user
-    end
-
-    def set_item
-      @item = current_cart_item.items.find_by(item_id: params[:item_id])
-    end
-
-    def set_cart
-      @cart_item = current_cart
-    end
-
-    def cart_item_params
-      params.require(:cart_item).permit(:item_id, :end_user_id, :number)
-    end
-
+  def cart_item_params
+    params.require(:cart_item).permit(:item_id, :end_user_id, :number)
   end
 end
 

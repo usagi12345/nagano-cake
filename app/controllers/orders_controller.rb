@@ -9,6 +9,12 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
+  end
+
+  def confirm
+    @order = Order.new
+    @cart_items = current_end_user.cart.items
   end
 
   def thanks

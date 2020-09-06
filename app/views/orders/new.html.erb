@@ -1,2 +1,19 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="row">
+  <div class="col-md-3 col-md-offset-1">
+    <h4><mark>注文情報入力</mark></h4>
+  </div>
+</div>
+<!-- 支払方法 -->
+<div class="row space">
+  <div class="col-md-2 col-md-offset-1">
+    <h4><strong>支払方法</strong></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3 col-md-offset-2">
+    <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
+      <label><%= f.radio_button :payment, "1" %>クレジットカード</label>
+      <label><%= f.radio_button :payment, "2" %>銀行振込</label>
+    <% end %>
+  </div>
+</div>

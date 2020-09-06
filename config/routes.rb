@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'home#top'
 	get 'about' => 'home#about'
 
@@ -10,15 +10,18 @@ Rails.application.routes.draw do
   }
 
   resources :genres, only: [:show]
-	resources :items, only: [:index, :show] do
-    resources :cart_items, only: [:index, :create, :destroy, :update]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+	resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :create, :destroy, :update] do
+    collection do
+      delete 'destroy_all'
+    end
   end
+
   resources :genres, only: [:show]
 	resources :deliveries, except: [:new, :show]
+  post 'orders/confirm' => 'orders#confirm'
+  get 'orders/thanks' => 'orders#thanks'
 	resources :orders, only: [:index, :show, :new, :create]
-	post 'orders/confirm' => 'orders#confirm'
-	get 'orders/thanks' => 'orders#thanks'
 	resource :end_users, only: [:show, :edit, :update]
 	get 'end_users/withdraw' => 'end_users#withdraw'
 	patch 'end_users/out' => 'end_users#out'
