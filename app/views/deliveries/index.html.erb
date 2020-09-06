@@ -1,2 +1,46 @@
-<h1>Deliveries#index</h1>
-<p>Find me in app/views/deliveries/index.html.erb</p>
+<h2>配送先登録/一覧</h2>
+<%= form_for(@delivery) do |f| %>
+<div class="row">
+	<div class="col-md-9 col-md-offset-3">
+		<div>
+			<%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+			<%= f.text_field :postal_code %>
+		</div>
+		<div>
+			<%= f.label :address, "住所" %>
+			<%= f.text_field :address %>
+		</div>
+		<div>
+			<%= f.label :name, "宛名" %>
+			<%= f.text_field :name %>
+		</div>
+		<div class="row">
+			<%= f.submit "登録する", class: "btn btn-primary col-md-offset-7" %>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<table>
+	<thead>
+		<tr>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>宛名</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @deliveries.each do |delivery| %>
+		<tr>
+			<td><%= delivery.postal_code %></td>
+			<td><%= delivery.address %></td>
+			<td><%= delivery.name %></td>
+			<td>
+				<%= link_to "編集する", edit_delivery_path(delivery), class: 'btn btn-success' %>
+				<%= link_to "削除する", delivery_path(delivery), method: :delete, class: 'btn btn-danger' %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
