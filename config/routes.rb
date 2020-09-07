@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/thanks' => 'orders#thanks'
 	resources :orders, only: [:index, :show, :new, :create]
-	resource :end_users, only: [:show, :edit, :update]
+
+	post 'orders/confirm' => 'orders#confirm'
+	get 'orders/thanks' => 'orders#thanks'
+	resource :end_users, only: [:show, :update]
+  get 'end_users/end_users/edit' => 'end_users#edit'
+
 	get 'end_users/withdraw' => 'end_users#withdraw'
 	patch 'end_users/out' => 'end_users#out'
 

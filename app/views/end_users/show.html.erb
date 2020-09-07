@@ -1,2 +1,60 @@
-<h1>EndUsers#show</h1>
-<p>Find me in app/views/end_users/show.html.erb</p>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h3>マイページ</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2">
+		<p><b>登録情報<b></p>
+	</div>
+	<div class="col-md-4">
+		<%= link_to "編集する", end_users_end_users_edit_path, class: "btn btn-primary" %>
+		<%= link_to "パスワードを変更する", new_end_user_password_path, class: "btn btn-primary" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<table class="table table-bordered">
+			<tr>
+				<td>氏名</td>
+				<td><%= "#{@user.first_name} #{@user.last_name}" %></td>
+			</tr>
+			<tr>
+				<td>カナ</td>
+				<td><%= "#{@user.first_name_kana} #{@user.last_name_kana}" %></td>
+			</tr>
+			<tr>
+				<td>郵便番号</td>
+				<td><%= @user.postal_code %></td>
+			</tr>
+			<tr>
+				<td>住所</td>
+				<td><%= @user.address %></td>
+			</tr>
+			<tr>
+				<td>電話番号</td>
+				<td><%= @user.phone %></td>
+			</tr>
+			<tr>
+				<td>メールアドレス</td>
+				<td><%= @user.email %></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2">
+		<p>配送先</p>
+	</div>
+	<div class="col-md-4">
+		<%= link_to "一覧を見る", deliveries_path, class: "btn btn-primary" %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-2">
+		<p>注文履歴</p>
+	</div>
+	<div class="col-md-4">
+		<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+	</div>
+</div>
