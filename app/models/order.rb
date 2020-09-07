@@ -12,5 +12,4 @@ class Order < ApplicationRecord
   validates :payment, presence: true
   validates :total_price, presence: true
 
-
 end
