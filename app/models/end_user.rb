@@ -9,6 +9,10 @@ class EndUser < ApplicationRecord
   has_many :deliveries, dependent: :destroy
   has_many :cart_items, dependent: :destroy
 
+
   enum is_deleted: { 有効: false, 退会済み: true }
+def active_for_authentication?
+        super && (self.is_deleted === "有効")
+    end
 
 end
