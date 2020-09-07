@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_082856) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
 
+
     t.integer "user_id"
 
     t.integer "number"
