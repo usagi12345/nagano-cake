@@ -1,18 +1,18 @@
 <h2>配送先登録/一覧</h2>
 <%= form_for(@delivery) do |f| %>
 <div class="row">
-	<div class="col-md-9 col-md-offset-3">
-		<div>
-			<%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-			<%= f.text_field :postal_code %>
+	<div class="col-md-11 col-md-offset-1">
+		<div class="row">
+			<%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-md-3" %>
+			<%= f.text_field :postal_code, class: "col-md-3" %>
 		</div>
-		<div>
-			<%= f.label :address, "住所" %>
-			<%= f.text_field :address %>
+		<div class="row">
+			<%= f.label :address, "住所", class: "col-md-3" %>
+			<%= f.text_field :address, class: "col-md-6" %>
 		</div>
-		<div>
-			<%= f.label :name, "宛名" %>
-			<%= f.text_field :name %>
+		<div class="row">
+			<%= f.label :name, "宛名", class: "col-md-3" %>
+			<%= f.text_field :name, class: "col-md-3" %>
 		</div>
 		<div class="row">
 			<%= f.submit "登録する", class: "btn btn-primary col-md-offset-7" %>
