@@ -34,14 +34,10 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
-      <label><%= f.radio_button :add, 1, cheked: "checked" %>ご自身の住所</label>
+      <label><%= f.radio_button :add, 1, cheked: "checked" %>ご自身の住所</label><br>
       <%= @end_user.postal_code %>
       <%= @end_user.address %>
-      <%= @end_user.name %>
-    </div>
-    <div class="radio-inline">
-      <%= f.radio_button :payment, :銀行振込 %>
-      <%= f.label :銀行振込, class: "payment_label" %>
+      <%= @end_user.first_name %><%= @end_user.last_name %>
     </div>
   </div>
 </div>
@@ -50,7 +46,7 @@
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
       <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
-      <%= f.collection_select :address, @end_user.addresses, :id, :address %>
+      <%= f.collection_select :address, @deliveries, :address, :delivery_all %>
     </div>
   </div>
 </div>
