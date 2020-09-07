@@ -59,11 +59,15 @@
     <table>
       <tr>
         <td><strong>支払方法</strong></td>
-        <td>支払方法を表示</td>
+        <td><%= @order.payment %></td>
       </tr>
       <tr>
         <td><strong>お届け先</strong></td>
-        <td>お届け先を表示</td>
+        <td>
+          <%= @order.postal_code %>
+          <%= @order.address %>
+          <%= @order.name %>
+        </td>
       </tr>
     </table>
   <!-- 購入ボタン -->

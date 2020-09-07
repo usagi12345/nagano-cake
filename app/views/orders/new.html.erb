@@ -13,13 +13,17 @@
 </div>
 <div class="row">
   <div class="col-md-3 col-md-offset-2">
-    <div class="radio-inline">
-      <%= f.radio_button :payment, :クレジットカード, checked: "checked" %>
-      <%= f.label :クレジットカード, class: "payment_label" %>
+    <div class="row">
+      <div class="radio-inline">
+        <%= f.radio_button :payment, :クレジットカード, checked: "checked" %>
+        <%= f.label :クレジットカード, class: "payment_label" %>
+      </div>
     </div>
-    <div class="radio-inline">
-      <%= f.radio_button :payment, :銀行振込 %>
-      <%= f.label :銀行振込, class: "payment_label" %>
+    <div class="row">
+      <div class="radio-inline">
+        <%= f.radio_button :payment, :銀行振込 %>
+        <%= f.label :銀行振込, class: "payment_label" %>
+      </div>
     </div>
   </div>
 </div>
@@ -35,8 +39,7 @@
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
       <label><%= f.radio_button :add, 1, cheked: "checked" %>ご自身の住所</label><br>
-      <%= @end_user.postal_code %>
-      <%= @end_user.address %>
+      <%= @end_user.postal_code %><%= @end_user.address %>
       <%= @end_user.first_name %><%= @end_user.last_name %>
     </div>
   </div>
@@ -46,31 +49,56 @@
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
       <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
-      <%= f.collection_select :address, @deliveries, :address, :delivery_all %>
+      <%= f.collection_select :address, @deliveries, :id, :delivery_all %>
     </div>
   </div>
 </div>
+<!-- 新しいお届け先 -->
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <div class="radio-inline">
+      <label><%= f.radio_button :add, 3 %>新しいお届け先</label>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-11 col-md-offset-1">
+    <div class="row">
+      
+        <div class="row">
+          <div class="col-lg-3">
+            <strong>郵便番号(ハイフンなし)</strong>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :postal_code, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <strong>住所</strong>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <strong>宛名</strong>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+<!-- お届け先ここまで -->
+<div class="row space">
+  <div class="col-md-6 col-md-offset-5">
+    <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
+  </div>
+</div>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
