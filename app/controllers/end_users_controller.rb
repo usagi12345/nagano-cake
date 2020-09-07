@@ -30,6 +30,9 @@ class EndUsersController < ApplicationController
     redirect_to root_path
   end
 
+  def password_edit
+  end
+
   private
   def end_user_params
     params.require(:end_user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :email, :encrypted_password, :phone)
