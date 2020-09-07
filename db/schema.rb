@@ -55,8 +55,10 @@ ActiveRecord::Schema.define(version: 2020_09_06_082856) do
     t.string "last_name_kana"
     t.string "postal_code"
     t.string "address"
+
     t.string "phone"
     t.boolean "is_deleted", default: false, null: false
+
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
