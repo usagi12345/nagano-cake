@@ -3,6 +3,8 @@
     <h4><mark>注文情報入力</mark></h4>
   </div>
 </div>
+
+<%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 <!-- 支払方法 -->
 <div class="row space">
   <div class="col-md-2 col-md-offset-1">
@@ -11,9 +13,68 @@
 </div>
 <div class="row">
   <div class="col-md-3 col-md-offset-2">
-    <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
-      <label><%= f.radio_button :payment, "1" %>クレジットカード</label>
-      <label><%= f.radio_button :payment, "2" %>銀行振込</label>
-    <% end %>
+    <div class="radio-inline">
+      <%= f.radio_button :payment, :クレジットカード, checked: "checked" %>
+      <%= f.label :クレジットカード, class: "payment_label" %>
+    </div>
+    <div class="radio-inline">
+      <%= f.radio_button :payment, :銀行振込 %>
+      <%= f.label :銀行振込, class: "payment_label" %>
+    </div>
   </div>
 </div>
+<!-- お届け先 -->
+<div class="row space">
+  <div class="col-md-2 col-md-offset-1">
+    <br>
+    <h4><strong>お届け先</strong></h4>
+  </div>
+</div>
+<!-- 自分の住所 -->
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <div class="radio-inline">
+      <label><%= f.radio_button :add, 1, cheked: "checked" %>ご自身の住所</label>
+      <%= @end_user.postal_code %>
+      <%= @end_user.address %>
+      <%= @end_user.name %>
+    </div>
+    <div class="radio-inline">
+      <%= f.radio_button :payment, :銀行振込 %>
+      <%= f.label :銀行振込, class: "payment_label" %>
+    </div>
+  </div>
+</div>
+<!-- 登録済み住所 -->
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <div class="radio-inline">
+      <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
+      <%= f.collection_select :address, @end_user.addresses, :id, :address %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
