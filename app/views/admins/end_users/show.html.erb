@@ -1,2 +1,53 @@
-<h1>Admins::EndUsers#show</h1>
-<p>Find me in app/views/admins/end_users/show.html.erb</p>
+  <div class="row">
+    <div class="col-md-7 col-lg-offset-1">
+      <h2><%= @user.first_name %><%= @user.last_name %>さんの詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-md-offset-1 ">
+      <table class="table text-nowrap">
+        <tbody>
+          <tr>
+            <td width="170">顧客ID</td>
+            <td>
+              <%= @user.id %>
+              <button type="button", style="background:blue; color:white; border: none; font-size: 10pt;"><%= @user.is_deleted %>会員</button>
+            </td>
+          </tr>
+          <tr>
+            <td width="170">氏名</td>
+            <td><%= @user.first_name %> <%= @user.last_name %></td>
+          </tr>
+          <tr>
+            <td width="170">フリナガ</td>
+            <td><%= @user.first_name_kana %> <%= @user.last_name_kana %></td>
+          </tr>
+          <tr>
+            <td width="170">郵便番号</td>
+            <td><%= @user.postal_code %></td>
+          </tr>
+          <tr>
+            <td width="170">住所</td>
+            <td><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td width="170">電話番号</td>
+            <td><%= @user.phone %></td>
+          </tr>
+          <tr>
+            <td width="170">メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    <div class="text-left">
+      <div class="col-md-2">
+        <%= link_to "編集する", edit_admins_end_user_path(@user), class: "btn btn-primary" %>
+      </div>
+      <div>
+        <div class="col-md-2">
+        <%= link_to "注文履歴一覧に戻る", admins_orders_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  </div>

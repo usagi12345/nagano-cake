@@ -1,14 +1,10 @@
 <div class="row">
   <div class="col-md-3 col-md-offset-1">
-    <h4><mark>ショッピングカート</mark></h4>
+    <h4><mark>注文情報確認</mark></h4>
   </div>
-  <!-- destroy_all -->
-  <div class="col-md-2 col-md-offset-9">
-    <p class="text-right"><%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %></p>
-  </div>
-  <!-- カート内訳 -->
+  <!-- 注文商品内訳 -->
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-7 col-md-offset-1">
       <table class="table table-hover tabel-inverse">
         <tr>
           <th></th>
@@ -34,25 +30,46 @@
             <%= sum_item = price_tax(cart_item.item.price_nontax).to_i * cart_item.number %>
             <% sum_all += sum_item %>
           </td>
-          <td>
-            <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
-          </td>
         </tr>
         <% end %>
-        <tr>
-          <td><%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %></td>
-          <td></td>
-          <td></td>
-          <td></td>
+      </table>
+
+     <div class="col-md-2 col-md-offset-2">
+        <table>
+          <tr>
+            <td>送料</td>
+            <td><%= @order.postage %></td>
+          </tr>
+          <tr>
+            <td>商品合計</td>
+            <td><%= sum_all %></td>
+          </tr>
+          <tr>
+            <td>請求金額</td>
+            <td>トータルプライス表示</td>
+          </tr>
+        </table>
           <td>合計金額</td>
           <td><%= sum_all %></td>
       </table>
     </div>
   </div>
-  <!-- 情報入力ボタン -->
+  <!-- 支払方法、お届け先 -->
+  <div class="row">
+    <table>
+      <tr>
+        <td><strong>支払方法</strong></td>
+        <td>支払方法を表示</td>
+      </tr>
+      <tr>
+        <td><strong>お届け先</strong></td>
+        <td>お届け先を表示</td>
+      </tr>
+    </table>
+  <!-- 購入ボタン -->
   <div class="row">
     <div class="col-md-6 col-md-offset-5">
-      <p><%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %></p>
+      <p><%= link_to "購入を確定する", orders_thanks_path, class: "btn btn-success" %></p>
     </div>
   </div>
 </div>

@@ -1,2 +1,21 @@
-<h1>EndUsers#withdraw</h1>
-<p>Find me in app/views/end_users/withdraw.html.erb</p>
+<div class="roew">
+	<div class="col-md-8 col-md-offset-4">
+		<h2><b>本当に退会しますか？</b></h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8 col-md-offset-4">
+		<P>退会すると、会員情報や</P><br>
+		<p>これまでの購入履歴が閲覧できなくなります。</p><br>
+		<p>退会する場合は、「退会する」をクリックしてください。</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3 col-md-offset-4">
+		<%= link_to "退会しない", end_users_path, class: "btn btn-primary" %>
+	</div>
+	<div class="col-md-3">
+		<%= link_to "退会する", end_users_out_path, method: :patch, class: "btn btn-danger" %>
+	</div>
+</div>
+</div>
