@@ -6,7 +6,7 @@ class Delivery < ApplicationRecord
   validates :address, presence: true
 
   def delivery_all
-    "#{postal_code + address + name}"
+    "#{postal_code}  #{address}  #{name}"
   end
 
 end

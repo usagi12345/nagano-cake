@@ -9,7 +9,7 @@ class CartItemsController < ApplicationController
 
   def create
     @end_user = current_end_user
-    @cart_item = current_end_user.cart_items.build(cart_item_params)
+    @cart_item = current_end_user.cart_items.new(cart_item_params)
     @current_item = CartItem.find_by(item_id: @cart_item.item_id, end_user_id: @cart_item.end_user.id)
     if @current_item.nil?
       if @cart_item.save
