@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
         @order.address = @end_user.address
         @order.name = @end_user.first_name + @end_user.last_name
       when 2  #配送先一覧から選択
-        @send = params[:order][:address].to_i
+        @send = params[:order][:addresses].to_i
         @delivery_info = Delivery.find(@send)
         @order.postal_code = @delivery_info.postal_code
         @order.address = @delivery_info.address
