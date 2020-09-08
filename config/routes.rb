@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 	resource :end_users, only: [:show, :update]
   get 'end_users/end_users/edit' => 'end_users#edit'
   get 'end_users/end_users/password_edit' => 'end_users#password_edit'
+  put 'end_users/end_users/password_edit' => 'end_users#password_update'
 
 	get 'end_users/withdraw' => 'end_users#withdraw'
 	patch 'end_users/out' => 'end_users#out'
