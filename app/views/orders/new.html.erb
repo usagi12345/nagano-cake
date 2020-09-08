@@ -1,14 +1,16 @@
 <div class="row">
-  <div class="col-md-3 col-md-offset-1">
-    <h4><mark>注文情報入力</mark></h4>
+  <div class="col-md-12">
+    <div class="col-md-10">
+      <h4><mark>注文情報入力</mark></h4>
+    </div>
   </div>
 </div>
 
 <%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
 <!-- 支払方法 -->
-<div class="row space">
+<div class="row">
   <div class="col-md-2 col-md-offset-1">
-    <h4><strong>支払方法</strong></h4>
+    <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>支払方法</strong></h4>
   </div>
 </div>
 <div class="row">
@@ -24,23 +26,24 @@
         <%= f.radio_button :payment, :銀行振込 %>
         <%= f.label :銀行振込, class: "payment_label" %>
       </div>
-    </div>
+    </div><br>
   </div>
 </div>
 <!-- お届け先 -->
-<div class="row space">
+<div class="row">
   <div class="col-md-2 col-md-offset-1">
-    <br>
-    <h4><strong>お届け先</strong></h4>
+    <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>お届け先</strong></h4>
   </div>
 </div>
 <!-- 自分の住所 -->
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
-      <label><%= f.radio_button :add, 1, cheked: "checked" %>ご自身の住所</label><br>
-      <%= @end_user.postal_code %><%= @end_user.address %>
-      <%= @end_user.first_name %><%= @end_user.last_name %>
+      <div class="row">
+        <label><%= f.radio_button :add, 1, checked: "checked" %>ご自身の住所</label><br>
+        <%= @end_user.postal_code %><%= @end_user.address %><br>
+        <%= @end_user.first_name %><%= @end_user.last_name %>
+      </div>
     </div>
   </div>
 </div>
@@ -48,8 +51,12 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
-      <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
-      <%= f.collection_select :address, @deliveries, :id, :delivery_all %>
+      <div class="row">
+        <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
+      </div>
+      <div class="row">
+        <%= f.collection_select :address, @deliveries, :id, :delivery_all, class: "send-form" %>
+      </div>
     </div>
   </div>
 </div>
@@ -57,46 +64,44 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
-      <label><%= f.radio_button :add, 3 %>新しいお届け先</label>
+      <div class="row">
+        <label><%= f.radio_button :add, 3 %>新しいお届け先</label>
+      </div>
     </div>
   </div>
 </div>
 <div class="form-group">
-  <div class="col-md-11 col-md-offset-1">
+  <div class="col-md-8 col-md-offset-2">
     <div class="row">
-      
-        <div class="row">
-          <div class="col-lg-3">
-            <strong>郵便番号(ハイフンなし)</strong>
-          </div>
-          <div class="col-md-6">
-            <%= f.text_field :postal_code, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-3">
-            <strong>住所</strong>
-          </div>
-          <div class="col-md-6">
-            <%= f.text_field :address, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-3">
-            <strong>宛名</strong>
-          </div>
-          <div class="col-md-6">
-            <%= f.text_field :name, class: 'form-control' %>
-          </div>
-        </div>
-      
+      <div class="col-lg-3">
+        <strong>郵便番号(ハイフンなし)</strong>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :postal_code, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <strong>住所</strong>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :address, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <strong>宛名</strong>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :name, class: 'form-control' %><br>
+      </div>
     </div>
   </div>
 </div>
 <!-- お届け先ここまで -->
-<div class="row space">
-  <div class="col-md-6 col-md-offset-5">
-    <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= f.submit "確認画面へ進む", class: "btn btn-primary btn-block btn-lg"%>
   </div>
 </div>
 <% end %>

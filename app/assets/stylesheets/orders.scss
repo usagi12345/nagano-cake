@@ -1,3 +1,36 @@
-// Place all the styles related to the orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+label {
+  font-size: 17px;
+}
+
+.order_confirm_table th {
+  color: #fff;
+  background-color: #220000;
+  font-size: 14px;
+  height: 30px;
+  border: 1px solid #fff;
+  vertical-align: middle;
+}
+
+.order_right_table {
+  border: 0.5px solid #220000;
+}
+
+.order_thead {
+  font-size: 14px;
+  color: #220000;
+  border: 0.5px solid #220000;
+  vertical-align: center;
+}
+
+.row {
+  padding-top: 20px;
+}
+
+.order_right {
+  color: #fff;
+  font-size: 14px;
+  background-color: #220000;
+  border: 0.5px solid #fff;
+  width: 170px;
+  height: 40px;
+}
