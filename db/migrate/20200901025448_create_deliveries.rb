@@ -2,9 +2,9 @@ class CreateDeliveries < ActiveRecord::Migration[5.2]
   def change
     create_table :deliveries do |t|
       t.integer :end_user_id
-      t.string :name
-      t.string :postal_code
-      t.string :address
+      t.string :name, null: false
+      t.string :postal_code, null: false
+      t.string :address, null: false
 
       t.timestamps
     end

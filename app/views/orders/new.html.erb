@@ -55,7 +55,7 @@
         <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
       </div>
       <div class="row">
-        <%= f.collection_select :address, @deliveries, :id, :delivery_all, class: "send-form" %>
+        <%= f.collection_select :addresses, @deliveries, :id, :delivery_all, class: "send-form" %>
       </div>
     </div>
   </div>
