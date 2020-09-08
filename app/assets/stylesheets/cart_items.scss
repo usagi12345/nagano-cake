@@ -1,3 +1,26 @@
-// Place all the styles related to the cart_items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.cart_thead th {
+  color: #fff;
+  background-color: #220000;
+  font-size: 16px;
+  height: 40px;
+  border: 0.5px solid #fff;
+}
+
+.cart_tbody {
+  font-size: 16px;
+  color: #220000;
+}
+
+.row {
+  padding-top: 20px;
+}
+
+.cart_total {
+  color: #fff;
+  font-size: 16px;
+  background-color: #220000;
+}
+
+td {
+  border: 0.5px solid #220000;
+}

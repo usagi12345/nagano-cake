@@ -1,79 +1,80 @@
 <div class="row">
-  <div class="col-md-3 col-md-offset-1">
-    <h4><mark>注文情報確認</mark></h4>
+  <div class="col-md-12">
+    <div class="col-md-10">
+      <h4><mark>注文情報確認</mark></h4>
+    </div>
   </div>
-  <!-- 注文商品内訳 -->
-  <div class="row">
-    <div class="col-md-7 col-md-offset-1">
-      <table class="table table-hover tabel-inverse">
-        <tr>
-          <th></th>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
-        </tr>
-        <% sum_all = 0 %>  <!-- sum_all = 合計金額 -->
-        <% @cart_items.each do |cart_item| %>
-        <tr>
-          <td><%= attachment_image_tag cart_item.item, :image, :fill, 100, 100 %></td>
-          <td><%= cart_item.item.name %></td>
-          <td><%= price_tax(cart_item.item.price_nontax) %></td>
-          <td>
-            <%= form_with model: cart_item, local: true do |f| %>
-              <%= f.number_field :number, value: cart_item.number, min: 1, max: 10 %>
-              <%= f.submit "変更", class: "btn btn-primary" %>
-            <% end %>
-          </td>
-          <td>  <!-- sum_item = 小計 -->
-            <%= sum_item = price_tax(cart_item.item.price_nontax).to_i * cart_item.number %>
-            <% sum_all += sum_item %>
-          </td>
-        </tr>
-        <% end %>
+</div>
+<!-- 注文商品内訳 -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-8">
+      <table class="table order_confirm_table">
+        <thead class="order_thead">
+          <tr>
+            <th colspan="2">商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sum_all = 0 %>  <!-- sum_all = 合計金額 -->
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td colspan="2",width="120px"><%= attachment_image_tag cart_item.item, :image, :fill, 50, 50 %>  <%= cart_item.item.name %></td>
+            <td><%= price_tax(cart_item.item.price_nontax) %></td>
+            <td><%= cart_item.number %></td>
+            <td>  <!-- sum_item = 小計 -->
+              <%= sum_item = price_tax(cart_item.item.price_nontax).to_i * cart_item.number %>
+              <% sum_all += sum_item %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
       </table>
+    </div>
 
-     <div class="col-md-2 col-md-offset-2">
-        <table>
-          <tr>
-            <td>送料</td>
-            <td><%= @order.postage %></td>
-          </tr>
-          <tr>
-            <td>商品合計</td>
-            <td><%= sum_all %></td>
-          </tr>
-          <tr>
-            <td>請求金額</td>
-            <td>トータルプライス表示</td>
-          </tr>
-        </table>
-          <td>合計金額</td>
+    <div class="col-md-4">
+      <table class="order_right_table">
+        <tr>
+          <td class="order_right"><strong>　送料</strong></td>
+          <td><%= @order.postage %>表示させる！！！</td>
+        </tr>
+        <tr>
+          <td class="order_right"><strong>　商品合計</strong></td>
           <td><%= sum_all %></td>
+        </tr>
+        <tr>
+          <td class="order_right"><strong>　請求金額</strong></td>
+          <td>トータルプライス表示</td>
+        </tr>
       </table>
     </div>
   </div>
-  <!-- 支払方法、お届け先 -->
-  <div class="row">
-    <table>
-      <tr>
-        <td><strong>支払方法</strong></td>
-        <td><%= @order.payment %></td>
-      </tr>
-      <tr>
-        <td><strong>お届け先</strong></td>
-        <td>
-          <%= @order.postal_code %>
-          <%= @order.address %>
-          <%= @order.name %>
-        </td>
-      </tr>
-    </table>
-  <!-- 購入ボタン -->
-  <div class="row">
-    <div class="col-md-6 col-md-offset-5">
-      <p><%= link_to "購入を確定する", orders_thanks_path, class: "btn btn-success" %></p>
-    </div>
+</div>
+<!-- 支払方法、お届け先 -->
+<div class="row">
+  <div class="col-md-2 col-md-offset-1">
+    <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>支払方法</strong></h4>
   </div>
+  <div class="col-md-8">
+    <h4><%= @order.payment %></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2 col-md-offset-1">
+    <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>お届け先</strong></h4>
+  </div>
+  <div class="col-md-8">
+    <h4><%= @order.postal_code %><%= @order.address %></h4><br>
+    <h4><%= @order.name %></h4>
+  </div>
+</div>
+<!-- 購入ボタン -->
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <p><%= link_to "購入を確定する", orders_thanks_path, class: "btn btn-success btn-block btn-lg" %></p>
+  </div>
+</div>
 </div>
