@@ -40,7 +40,7 @@
       <table class="order_right_table">
         <tr>
           <td class="order_right"><strong>　送料</strong></td>
-          <td><%= @order.postage %>表示させる！！！</td>
+          <td><%= @order.postage %></td>
         </tr>
         <tr>
           <td class="order_right"><strong>　商品合計</strong></td>
@@ -48,7 +48,9 @@
         </tr>
         <tr>
           <td class="order_right"><strong>　請求金額</strong></td>
-          <td><%= @order.total_price %>トータルプライス表示</td>
+
+          <td><%= @order.total_price %></td>
+
         </tr>
       </table>
     </div>
@@ -77,6 +79,7 @@
   <%= f.hidden_field :address, :value => "#{@order.address}" %>
   <%= f.hidden_field :name, :value => "#{@order.name}" %>
   <%= f.hidden_field :payment, :value => "#{@order.payment}" %>
+  <%= f.hidden_field :total_price, :value => "#{@order.total_price}" %>
 <!-- 購入ボタン -->
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
