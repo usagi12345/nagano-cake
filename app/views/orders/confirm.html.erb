@@ -7,6 +7,7 @@
 </div>
 <!-- 注文商品内訳 -->
 <div class="row">
+<%= form_for(@order) do |f| %>
   <div class="col-md-12">
     <div class="col-md-8">
       <table class="table order_confirm_table">
@@ -77,4 +78,5 @@
     <p><%= link_to "購入を確定する", orders_thanks_path, class: "btn btn-success btn-block btn-lg" %></p>
   </div>
 </div>
+<% end %>
 </div>
