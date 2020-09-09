@@ -7,9 +7,6 @@ class Order < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :name, presence: true
-  validates :postage, presence: true
-  validates :order_status, presence: true
   validates :payment, presence: true
-  validates :total_price, presence: true
-
+  
 end
