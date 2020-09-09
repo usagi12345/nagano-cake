@@ -51,6 +51,7 @@ class OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+      @order.total_price = 0
       @order.save
       # send_to_addressで住所モデル検索、該当データなければ新規作成
       if Delivery.find_by(address: @order.address).nil?
@@ -61,12 +62,13 @@ class OrdersController < ApplicationController
         @delivery.end_user_id = current_end_user.id
         @delivery.save
       end
+
         current_end_user.cart_items.each do |cart_item|
           order_item = @order.order_items.new
           order_item.order_id = @order.id
           order_item.item_id = cart_item.item_id
           order_item.number = cart_item.number
-          order_item.price = price_tax(cart_item.item.price_nontax)
+          order_item.price = cart_item.item.price_nontax*1.1.floor
           order_item.save
           cart_item.destroy #order_itemに情報を移したらcart_itemは消去
         end
@@ -81,6 +83,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:post_code, :address, :name, :postage, :order_status, :payment, :total_price)
+    params.require(:order).permit(:postal_code, :address, :name,  :payment)
   end
 end
