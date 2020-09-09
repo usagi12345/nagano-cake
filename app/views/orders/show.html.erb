@@ -1,2 +1,100 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-10">
+      <h4><mark>注文履歴詳細</mark></h4>
+    </div>
+  </div>
+</div>
+<!-- 注文履歴詳細　注文情報 -->
+<div class="row">
+  <div class="row">
+    <div class="col-md-7">
+      <h4>注文情報</h4>
+    </div>
+    <div class="col-md-5">
+      <h4>請求情報</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <p>注文日</p>
+      </div>
+      <div class="col-md-4">
+        <p><%= @order.created_at.strftime('%Y/%m/%d') %></p>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <p>商品合計</p>
+      </div>
+      <div class="col-md-3">
+        <p>商品合計金額（sum all)</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <p>配送先</p>
+      </div>
+      <div class="col-md-4">
+        <p>
+          <div><%= @order.postal_code %></div>
+          <div><%= @order.address %></div>
+          <div><%= @order.name %></div>
+        </p>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <p>配送料</p>
+      </div>
+      <div class="col-md-3">
+        <p><%= @order.postage %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <p>支払方法</p>
+      </div>
+      <div class="col-md-4">
+        <p><%= @order.payment %></p>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <p><strong>ご請求額</strong></p>
+      </div>
+      <div class="col-md-3">
+        <p><%= @order.total_price %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <h4>注文内容</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-inverse">
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>単価（税込）</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.order_item.item.name %></td>
+          <td><%= price_tax(order.order_item.item.price_nontax) %></td>
+          <td><%= order.order_item.number %></td>
+          <td>小計を表示させる</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
