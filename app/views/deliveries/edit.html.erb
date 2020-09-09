@@ -1,21 +1,21 @@
-<h2>配送先登録/一覧</h2>
+<h3><mark>配送先編集</mark></h3>
 <%= form_for(@delivery) do |f| %>
 <div class="row">
 	<div class="col-md-11 col-md-offset-1">
 		<div class="row">
 			<%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-md-3" %>
-			<%= f.text_field :postal_code, class: "col-md-3" %>
+			<span class="col-md-3"><%= f.text_field :postal_code, class: "form-control" %></span>
 		</div>
 		<div class="row">
 			<%= f.label :address, "住所", class: "col-md-3" %>
-			<%= f.text_field :address, class: "col-md-6" %>
+			<span class="col-md-6"><%= f.text_field :address, class: "form-control" %></span>
 		</div>
 		<div class="row">
 			<%= f.label :name, "宛名", class: "col-md-3" %>
-			<%= f.text_field :name, class: "col-md-3" %>
+			<span class="col-md-3"><%= f.text_field :name, class: "form-control" %></span>
 		</div>
 		<div class="row">
-			<%= f.submit "編集する", class: "btn btn-primary col-md-offset-7" %>
+			<%= f.submit "編集する", class: "btn btn-primary col-md-offset-8" %>
 		</div>
 	</div>
 </div>

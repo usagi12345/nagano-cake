@@ -3,9 +3,12 @@ class OrdersController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
+    @orders = Order.all
   end
 
   def show
+    @order = Order.find(params[:id])
+    @orders = @order.order_items
   end
 
   def new
@@ -49,7 +52,6 @@ class OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
       @order.save
-
       # send_to_addressで住所モデル検索、該当データなければ新規作成
       if Delivery.find_by(address: @order.address).nil?
         @delivery = Delivery.new
