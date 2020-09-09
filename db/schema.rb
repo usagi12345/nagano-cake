@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_082856) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "number"
+    t.integer "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "end_user_id"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2020_09_06_082856) do
 
   create_table "deliveries", force: :cascade do |t|
     t.integer "end_user_id"
-    t.string "name"
-    t.string "postal_code"
-    t.string "address"
+    t.string "name", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,32 +49,32 @@ ActiveRecord::Schema.define(version: 2020_09_06_082856) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_name"
-    t.string "first_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.string "postal_code"
-    t.string "address"
-    t.string "phone"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "phone", null: false
     t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_valid"
+    t.string "name", null: false
+    t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
-    t.string "name"
-    t.text "explanation"
-    t.integer "price_nontax"
-    t.string "image_id"
-    t.boolean "sale_status"
+    t.string "name", null: false
+    t.text "explanation", null: false
+    t.integer "price_nontax", null: false
+    t.string "image_id", null: false
+    t.boolean "sale_status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,22 +82,22 @@ ActiveRecord::Schema.define(version: 2020_09_06_082856) do
   create_table "order_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "order_id"
-    t.integer "number"
-    t.integer "production_status"
-    t.integer "price"
+    t.integer "number", null: false
+    t.integer "production_status", default: 0, null: false
+    t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "end_user_id"
-    t.string "postal_code"
-    t.string "address"
-    t.string "name"
-    t.integer "postage"
-    t.integer "order_status"
-    t.integer "payment"
-    t.integer "total_price"
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
+    t.integer "postage", default: 800, null: false
+    t.integer "order_status", default: 0, null: false
+    t.integer "payment", null: false
+    t.integer "total_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

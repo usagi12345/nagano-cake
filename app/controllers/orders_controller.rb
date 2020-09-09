@@ -75,6 +75,7 @@ class OrdersController < ApplicationController
   end
 
   def thanks
+  end
 
   private
   def order_params
