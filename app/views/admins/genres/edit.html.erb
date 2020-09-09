@@ -1,2 +1,20 @@
-<h1>Admins::Genres#edit</h1>
-<p>Find me in app/views/admins/genres/edit.html.erb</p>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+  	<h4><mark>ジャンル編集</mark></h4>
+		<%= form_for(@genre, url: admins_genre_path) do |f| %>
+			<div class="form-group">
+				<div class="row"  style="font-size: 18px;">
+					<strong>ジャンル</strong>
+					<span style="width: 50px;">
+		   			<%= f.text_field :name %>
+		   		</span>
+		      <%= f.radio_button :is_valid, true, checked: "checked" %>
+		      <%= f.label :有効 %>
+		      <%= f.radio_button :is_valid, false %>
+		      <%= f.label :無効 %>
+		   	  <%= f.submit '変更を保存する', class: "btn btn-primary" %>
+		   	</div>
+		  </div>
+  	<% end %>
+  </div>
+</div>
