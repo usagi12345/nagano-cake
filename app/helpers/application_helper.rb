@@ -21,7 +21,6 @@ module ApplicationHelper
   end
 
   def billing_price(order)
-
     total_price(current_cart) + @order.postage
   end
 
