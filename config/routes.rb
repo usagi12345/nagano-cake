@@ -39,9 +39,8 @@ Rails.application.routes.draw do
   namespace :admins do
     root 'home#top'
     resources :items, except: [:destroy]
-    resources :orders, only: [:index, :show, :update] do
-      resources :order_details, only: [:update]
-    end
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
   end
