@@ -3,7 +3,7 @@ class Admins::EndUsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = EndUser.page(params[:page]).per(10)
+    @users = EndUser.page(params[:page]).per(2)
   end
 
   def show
