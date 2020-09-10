@@ -7,7 +7,6 @@
 </div>
 <!-- 注文商品内訳 -->
 <div class="row">
-
 <%= form_for(@order, url: {action: 'create'}) do |f| %>
   <div class="col-md-12">
     <div class="col-md-8">
@@ -43,15 +42,11 @@
         </tr>
         <tr>
           <td class="order_right"><strong>　商品合計</strong></td>
-
-          <td><%= @sum_all %></td>
+          <td><%= total_price(@cart_items).to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class="order_right"><strong>　請求金額</strong></td>
-
-          <td><%= @order.total_price %></td>
-
-
+          <td><%= billing_price(@order).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
