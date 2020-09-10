@@ -3,8 +3,8 @@
   <%= render 'items/genre_sidebar', genres: @genres %>
   <!-- 商品一覧 -->
   <div class="col-md-9 col-md-offset-1">
-    <h1><%= @genre.name %> 一覧</h1>
-    <span>(全<%= @items.count %>件)</span>
+    <% if @genre.is_valid == true %>
+    <h2><%= @genre.name %> 一覧 <span style="font-size: 20px;">(全<%= @items.count %>件)</span></h2>
     <div class="row">
       <% @items.each do |item| %>
         <div class="col-md-3">
@@ -16,6 +16,11 @@
         </div>
       <% end %>
     </div>
+    <% else %>
+      <div class="text-center">
+        <h2 style="margin-top: 30%">現在、取り扱いがありません</h2>
+      </div>
+    <%end %>
   </div>
 </div>
 

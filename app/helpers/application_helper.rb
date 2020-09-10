@@ -8,11 +8,11 @@ module ApplicationHelper
     (price * 1.1).floor
   end
 
-  def sub_price(sub)  #商品小計
+  def sub_price(sub)#sub=cart.item
     (price_tax(sub.item.price_nontax) * sub.number)
   end
 
-  def total_price(totals) #商品合計
+
     price = 0
     totals.each do |total|
       price  +=  sub_price(total)
@@ -20,7 +20,8 @@ module ApplicationHelper
     return price
   end
 
-  def billing_price(order) #請求額
+  def billing_price(order)
+
     total_price(current_cart) + @order.postage
   end
 
