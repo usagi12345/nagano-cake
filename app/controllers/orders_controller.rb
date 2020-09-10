@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
     @end_user = current_end_user
     @order = Order.new
     @cart_items = @end_user.cart_items
-    @sum_all = OrderItem.all.sum("number * price")
 
     @order.payment = params[:order][:payment]
     # 住所のラジオボタン選択に応じて引数を調整
