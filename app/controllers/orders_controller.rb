@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @orders = @order.order_items
   end
 
   def new
@@ -21,7 +20,8 @@ class OrdersController < ApplicationController
     @end_user = current_end_user
     @order = Order.new
     @cart_items = @end_user.cart_items
-    @order.total_price = Order.sum_price + @order.postage
+    @sum_all = OrderItem.all.sum("number * price")
+
     @order.payment = params[:order][:payment]
     # 住所のラジオボタン選択に応じて引数を調整
     @add = params[:order][:add].to_i
