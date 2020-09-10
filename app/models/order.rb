@@ -8,18 +8,6 @@ class Order < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
   validates :payment, presence: true
-  
 
-  def sum_price
-    sum_all = 0
-    #sum_all = 合計金額
-    @cart_items.each do |cart_item|
-    price_tax(cart_item.item.price_nontax)
-    cart_item.number
-    #sum_item = 小計
-    sum_item = price_tax(cart_item.item.price_nontax).to_i * cart_item.number
-    sum_all += sum_item
-  end
-  end
 end
 

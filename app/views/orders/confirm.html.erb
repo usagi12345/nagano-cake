@@ -20,15 +20,13 @@
           </tr>
         </thead>
         <tbody>
-          <% sum_all = 0 %>  <!-- sum_all = 合計金額 -->
           <% @cart_items.each do |cart_item| %>
           <tr>
             <td colspan="2",width="120px"><%= attachment_image_tag cart_item.item, :image, :fill, 50, 50 %>  <%= cart_item.item.name %></td>
             <td><%= price_tax(cart_item.item.price_nontax) %></td>
             <td><%= cart_item.number %></td>
             <td>  <!-- sum_item = 小計 -->
-              <%= sum_item = price_tax(cart_item.item.price_nontax).to_i * cart_item.number %>
-              <% sum_all += sum_item %>
+              <%= sub_price(cart_item).to_s(:delimited) %>
             </td>
           </tr>
           <% end %>
@@ -44,12 +42,14 @@
         </tr>
         <tr>
           <td class="order_right"><strong>　商品合計</strong></td>
+
           <td><%= @sum_all %></td>
         </tr>
         <tr>
           <td class="order_right"><strong>　請求金額</strong></td>
 
           <td><%= @order.total_price %></td>
+
 
         </tr>
       </table>

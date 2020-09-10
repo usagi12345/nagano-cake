@@ -85,12 +85,14 @@
         </tr>
       </thead>
       <tbody>
+
         <% @order.order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.item.name %></td>
           <td><%= order_item.price %></td>
           <td><%= order_item.number %></td>
           <td><%= order_item.price * order_item.number %></td>
+
         </tr>
         <% end %>
       </tbody>
