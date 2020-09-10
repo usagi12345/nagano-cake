@@ -13,16 +13,16 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			  <div class="col-md-4 col-md-offset-4">
 				<%= form_for(@cart_item, url: cart_items_path) do |f| %>
-				  <%= f.number_field :number, placeholder: "個数選択", min: 1, max: 10, class: "form-control" %>
-				  <%= f.hidden_field :item_id, value: @item.id %>
-				</div>
-				<div class="col-md-4">
-				  <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+				  <div class="col-md-4 col-md-offset-4">
+					  <%= f.number_field :number, placeholder: "個数選択", min: 1, max: 10, class: "form-control" %>
+					  <%= f.hidden_field :item_id, value: @item.id %>
+					</div>
+					<div class="col-md-4">
+					  <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+					</div>
 				<% end %>
-				</div>
+			</div>
 		</div>
 	</div>
-
 </div>
