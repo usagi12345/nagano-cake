@@ -8,4 +8,6 @@ class OrderItem < ApplicationRecord
   validates :production_status, presence: true
   validates :price, presence: true
 
+  OrderItem.all.sum("number * price")
+
 end
