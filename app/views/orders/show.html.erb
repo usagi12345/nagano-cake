@@ -8,11 +8,13 @@
 <!-- 注文履歴詳細　注文情報 -->
 <div class="row">
   <div class="row">
-    <div class="col-md-7">
-      <h4>注文情報</h4>
-    </div>
-    <div class="col-md-5">
-      <h4>請求情報</h4>
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>注文情報</strong></h4>
+      </div>
+      <div class="col-md-2 col-md-offset-5" >
+        <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>請求情報</strong></h4>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -27,7 +29,7 @@
         <p>商品合計</p>
       </div>
       <div class="col-md-3">
-        <p>商品合計金額（sum all)</p>
+        <p><%= total_price(@order.order_items).to_s(:delimited) %></p>
       </div>
     </div>
   </div>
@@ -63,14 +65,14 @@
         <p><strong>ご請求額</strong></p>
       </div>
       <div class="col-md-3">
-        <p><%= @order.total_price %></p>
+        <p><%= @order.total_price.to_s(:delimited) %></p>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-md-2">
-    <h4>注文内容</h4>
+    <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>注文内容</strong></h4>
   </div>
 </div>
 <div class="row">
@@ -88,7 +90,7 @@
         <% @order.order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.item.name %></td>
-          <td><%= order_item.price %></td>
+          <td><%= order_item.price.to_s(:delimited) %></td>
           <td><%= order_item.number %></td>
           <td><%= order_item.price * order_item.number %></td>
         </tr>
@@ -97,4 +99,8 @@
     </table>
   </div>
 </div>
-
+<div class="row">
+  <div class="col-md-12">
+    <p class="text-right"><%= link_to "注文一覧へ戻る ＞", orders_path %></p>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+  include ApplicationHelper
   before_action :authenticate_end_user!
 
   def index
@@ -19,8 +20,8 @@ class OrdersController < ApplicationController
   def confirm
     @end_user = current_end_user
     @order = Order.new
-    @cart_items = @end_user.cart_items
-
+    @cart_items = current_cart
+    @order.total_price = billing_price(@order)
     @order.payment = params[:order][:payment]
     # 住所のラジオボタン選択に応じて引数を調整
     @add = params[:order][:add].to_i
@@ -46,9 +47,6 @@ class OrdersController < ApplicationController
     if current_end_user.cart_items.exists?
       @order = Order.new(order_params)
       @order.end_user_id = current_end_user.id
-
-      # 住所のラジオボタン選択に応じて引数を調整
-      @order.total_price = 0
       @order.save
       # send_to_addressで住所モデル検索、該当データなければ新規作成
       if Delivery.find_by(address: @order.address).nil?
@@ -64,6 +62,7 @@ class OrdersController < ApplicationController
           order_item.order_id = @order.id
           order_item.item_id = cart_item.item_id
           order_item.number = cart_item.number
+          order_item.price = (cart_item.item.price_nontax.to_i * 1.1).floor
           order_item.save
           cart_item.destroy #order_itemに情報を移したらcart_itemは消去
         end
