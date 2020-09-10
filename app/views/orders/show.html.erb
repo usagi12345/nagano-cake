@@ -85,11 +85,11 @@
         </tr>
       </thead>
       <tbody>
-        <% @orders.each do |order| %>
+        <% @order_items.each do |order_item| %>
         <tr>
-          <td><%= order.order_item.item.name %></td>
+          <td><%= order_item.item.name %></td>
           <td><%= price_tax(order.order_item.item.price_nontax) %></td>
-          <td><%= order.order_item.number %></td>
+          <td><%= order_item.number %></td>
           <td>小計を表示させる</td>
         </tr>
         <% end %>
