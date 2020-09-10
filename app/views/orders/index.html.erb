@@ -28,6 +28,11 @@
             <div><%= order.address %></div>
             <div><%= order.name %></div>
           </td>
+          <td>
+          <% order.order_items.each do |order_item| %>
+            <p><%= order_item.item.name %></p>
+          <% end %>
+          </td>
           <td><%= order.total_price %></td>
           <td><%= order.order_status %></td>
           <td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>

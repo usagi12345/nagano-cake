@@ -43,11 +43,15 @@
         </tr>
         <tr>
           <td class="order_right"><strong>　商品合計</strong></td>
-          <td><%= total_price(@cart_items).to_s(:delimited) %></td>
+
+          <td><%= @sum_all %></td>
         </tr>
         <tr>
           <td class="order_right"><strong>　請求金額</strong></td>
-          <td><%= billing_price(@order).to_s(:delimited) %></td>
+
+          <td><%= @order.total_price %></td>
+
+
         </tr>
       </table>
     </div>

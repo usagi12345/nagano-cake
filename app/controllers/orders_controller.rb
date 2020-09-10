@@ -20,8 +20,11 @@ class OrdersController < ApplicationController
   def confirm
     @end_user = current_end_user
     @order = Order.new
-    @cart_items = current_cart
-    @order.total_price = billing_price(@order)
+
+    @cart_items = @end_user.cart_items
+    @sum_all = OrderItem.all.sum("number * price")
+
+
     @order.payment = params[:order][:payment]
     # 住所のラジオボタン選択に応じて引数を調整
     @add = params[:order][:add].to_i
