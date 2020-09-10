@@ -8,11 +8,11 @@ module ApplicationHelper
     (price * 1.1).floor
   end
 
- def sub_price(sub)
+  def sub_price(sub)#sub=cart.item
     (price_tax(sub.item.price_nontax) * sub.number)
   end
 
-  def total_price(totals)
+
     price = 0
     totals.each do |total|
       price  +=  sub_price(total)

@@ -25,7 +25,7 @@
             <td colspan="2",width="120px"><%= attachment_image_tag cart_item.item, :image, :fill, 50, 50 %>  <%= cart_item.item.name %></td>
             <td><%= price_tax(cart_item.item.price_nontax) %></td>
             <td><%= cart_item.number %></td>
-            <td>  <!-- sum_item = 小計 -->
+            <td>
               <%= sub_price(cart_item).to_s(:delimited) %>
             </td>
           </tr>
