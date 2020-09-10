@@ -7,6 +7,5 @@ class OrderItem < ApplicationRecord
   validates :number, presence: true
   validates :price, presence: true
 
-  OrderItem.all.sum("number * price")
 
 end

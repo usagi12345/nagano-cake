@@ -47,8 +47,6 @@ class OrdersController < ApplicationController
     if current_end_user.cart_items.exists?
       @order = Order.new(order_params)
       @order.end_user_id = current_end_user.id
-
-      # 住所のラジオボタン選択に応じて引数を調整
       @order.save
       # send_to_addressで住所モデル検索、該当データなければ新規作成
       if Delivery.find_by(address: @order.address).nil?

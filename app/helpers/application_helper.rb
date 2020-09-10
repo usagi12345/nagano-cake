@@ -12,7 +12,7 @@ module ApplicationHelper
     (price_tax(sub.item.price_nontax) * sub.number)
   end
 
-  def total_price(totals)#totals= @cart.items = current_cart = current_end_user.cart_items
+
     price = 0
     totals.each do |total|
       price  +=  sub_price(total)
@@ -21,6 +21,7 @@ module ApplicationHelper
   end
 
   def billing_price(order)
+
     total_price(current_cart) + @order.postage
   end
 

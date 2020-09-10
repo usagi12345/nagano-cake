@@ -1,42 +1,48 @@
-	<div class="row">
-		<h1>商品詳細</h1>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<h4><mark>商品詳細</mark></h4>
 	</div>
-	<div class="row">
-		<div class="col-md-4">
-			<%= attachment_image_tag @item, :image, format: 'jpeg', size:"200x150", fallback: "no_image.png" %>
-		</div>
-		<div class="col-md-8">
-			<table class="table text-nowrap">
-				<tbody>
-					<tr>
-						<td>商品名</td>
-						<td><%= @item.name %></td>
-					</tr>
-					<tr>
-						<td>商品説明</td>
-						<td><%= @item.explanation %></td>
-					</tr>
-					<tr>
-						<td>ジャンル</td>
-						<td><%= @item.genre.name %></td>
-					</tr>
-					<tr>
-						<td>税込み価格(税抜き価格)</td>
-						<td><%= @price_tax.round %>(<%= @item.price_nontax %>)</td>
-					</tr>
-					<tr>
-						<td>販売ステータス</td>
-						<td><% if @item.sale_status == true %>
-							<P> 販売中 </P>
-							<% else %>
-							<P> 売り切れ </P>
-							<% end %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-md-offset-1">
+		<%= attachment_image_tag @item, :image, format: 'jpeg', size:"300x260", fallback: "no_image.png" %>
 	</div>
-		<div class="text-right">
-	<%= link_to "編集する", edit_admins_item_path, class: "btn btn-default" %>
+	<div class="col-md-6">
+		<table class="table table table-bordered">
+			<tbody>
+				<tr>
+					<td>商品名</td>
+					<td><%= @item.name %></td>
+				</tr>
+				<tr>
+					<td>商品説明</td>
+					<td><%= @item.explanation %></td>
+				</tr>
+				<tr>
+					<td>ジャンル</td>
+					<td><%= @item.genre.name %></td>
+				</tr>
+				<tr>
+					<td>税込価格(税抜価格)</td>
+					<td>
+						<%= price_tax(@item.price_nontax) %>（<%= @item.price_nontax %>）円
+					</td>
+				</tr>
+				<tr>
+					<td>販売ステータス</td>
+					<td><% if @item.sale_status == true %>
+						<P> 販売中 </P>
+						<% else %>
+						<P> 売り切れ </P>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="col-md-11">
+	<div class="text-right">
+    <%= link_to "編集する", edit_admins_item_path, class: "btn btn-primary" %>
+  </div>
 </div>
