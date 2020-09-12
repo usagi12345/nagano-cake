@@ -12,7 +12,7 @@ class Order < ApplicationRecord
   after_update do
     if self.order_status == '入金確認'
       self.order_items.each do |order_item|
-        order_item.production_status.update(production_status: '製作待ち')
+        order_item.update(production_status: '製作待ち')
       end
     end
   end

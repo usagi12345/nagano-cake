@@ -3,20 +3,26 @@ include ApplicationHelper
   before_action :authenticate_admin!
 
   def index
-  	@orders = Order.all
+
+  	@order = Order.all
+
   	case params[:order_sort]
   	when "0"
-  		@orders = Order.where(created_at: Date.today)
-  	when "1"
-  		@end_user = EndUser.find(params[:end_user_id])
-  		@orders = @end_user_orders
+  		@orders = Order.where(created_at: Time.now.all_day)
   	else
   		@orders = Order.all
+    end
   end
-end
+
+  def end_user_index
+    @end_user = EndUser.find(params[:id])
+    @orders = @end_user.orders.all
+  end
+
 
   def show
   	@order = Order.find(params[:id])
+    # binding.pry
   end
 
   def update
