@@ -6,15 +6,15 @@ include ApplicationHelper
   	@order = Order.all
   	case params[:order_sort]
   	when "0"
-  		@orders = Order.where(created_at: Time.now.all_day)
+  		@orders = Order.where(created_at: Time.now.all_day).reverse_order
   	else
-  		@orders = Order.all
+  		@orders = Order.all.order(id: "DESC")
     end
   end
 
   def end_user_index
     @end_user = EndUser.find(params[:id])
-    @orders = @end_user.orders.all
+    @orders = @end_user.orders.order(id: "DESC")
   end
 
 
