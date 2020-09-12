@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       when EndUser
         items_path
       when Admin
-        admins_items_path
+        admins_root_path
       end
         # Log_in後に遷移するpath
     end
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
       when EndUser
         items_path
       when Admin
-        admins_items_path
+        admins_root_path
       end  # Sign_Up後に遷移するpath
     end
 
