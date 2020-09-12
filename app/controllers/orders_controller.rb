@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    @orders = Order.all
+    @orders = current_end_user.orders.all
   end
 
   def show

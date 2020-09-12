@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     root 'home#top'
     resources :items, except: [:destroy]
     resources :orders, only: [:index, :show, :update]
+    get 'end_user_index/:id' => 'orders#end_user_index'
     resources :order_details, only: [:update]
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
