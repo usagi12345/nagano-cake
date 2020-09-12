@@ -18,18 +18,17 @@ end
   def show
   	@order = Order.find(params[:id])
   end
+
   def update
-  	@order = Order.find(params[:id])
-  	if @order.order_items.production_status == 2
-  		@order.order_status = 2
-  		@order.update
-  	elsif @order.order_items.production_status == 3
-	  		@order.order_status = 3
-	  		@order.update
-  	else
+    if @order.order_items.production_status == 2
+      @order.order_status = 2
+      @order.update
+    elsif @order.order_items.production_status == 3
+        @order.order_status = 3
+        @order.update
+    else
     @order.update(order_params)
-	end
-    redirect_to request.referer
+  end
   end
 
   private
