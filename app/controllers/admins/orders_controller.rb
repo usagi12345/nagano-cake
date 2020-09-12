@@ -3,7 +3,9 @@ include ApplicationHelper
   before_action :authenticate_admin!
 
   def index
+
   	@order = Order.all
+
   	case params[:order_sort]
   	when "0"
   		@orders = Order.where(created_at: Time.now.all_day).reverse_order
@@ -20,23 +22,19 @@ include ApplicationHelper
 
   def show
   	@order = Order.find(params[:id])
+    # binding.pry
   end
 
   def update
-    if @order.order_items.production_status == 2
-      @order.order_status = 2
-      @order.update
-    elsif @order.order_items.production_status == 3
-        @order.order_status = 3
-        @order.update
-    else
+    @order = Order.find(params[:id])
     @order.update(order_params)
-  end
+    # Orderモデルの方でafter_update　＝＞製作ステータスの自動更新
+    redirect_to admins_order_path(@order)
   end
 
   private
 
-  def orders_params
+  def order_params
     params.require(:order).permit(:order_status)
   end
 
