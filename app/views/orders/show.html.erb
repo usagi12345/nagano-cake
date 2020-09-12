@@ -9,20 +9,20 @@
 <div class="row">
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-2">
+      <div class="col-md-2 col-md-offset-1">
         <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>注文情報</strong></h4>
       </div>
-      <div class="col-md-2 col-md-offset-5" >
+      <div class="col-md-2 col-md-offset-4" >
         <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>請求情報</strong></h4>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-2">
+      <div class="col-md-2 col-md-offset-1">
         <p>注文日</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <p><%= @order.created_at.strftime('%Y/%m/%d') %></p>
       </div>
       <div class="col-md-2 col-md-offset-1">
@@ -35,10 +35,10 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-2">
+      <div class="col-md-2 col-md-offset-1">
         <p>配送先</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <p>
           <div><%= @order.postal_code %></div>
           <div><%= @order.address %></div>
@@ -55,10 +55,10 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-2">
+      <div class="col-md-2 col-md-offset-1">
         <p>支払方法</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <p><%= @order.payment %></p>
       </div>
       <div class="col-md-2 col-md-offset-1">
@@ -71,28 +71,28 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-2 col-md-offset-1">
     <h4 style="text-align: center; border-bottom: 1px solid #000;"><strong>注文内容</strong></h4>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
-    <table class="table table-inverse">
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-bordered" style="background: rgba(139,69,19,0.2);">
       <thead>
         <tr>
-          <th>商品</th>
-          <th>単価（税込）</th>
-          <th>個数</th>
-          <th>小計</th>
+          <th class="text-center">商品</th>
+          <th class="text-center", width="15%">単価（税込）</th>
+          <th class="text-center", width="15%">個数</th>
+          <th class="text-center", width="15%">小計</th>
         </tr>
       </thead>
       <tbody>
         <% @order.order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.item.name %></td>
-          <td><%= order_item.price.to_s(:delimited) %></td>
-          <td><%= order_item.number %></td>
-          <td><%= order_item.price * order_item.number %></td>
+          <td class="text-right"><%= order_item.price.to_s(:delimited) %></td>
+          <td class="text-right"><%= order_item.number %></td>
+          <td class="text-right"><%= order_item.price * order_item.number %></td>
         </tr>
         <% end %>
       </tbody>
@@ -100,7 +100,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-10 col-md-offset-1">
     <p class="text-right"><%= link_to "注文一覧へ戻る ＞", orders_path %></p>
   </div>
 </div>
