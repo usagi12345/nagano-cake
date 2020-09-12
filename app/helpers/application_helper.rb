@@ -12,7 +12,7 @@ module ApplicationHelper
     (price_tax(sub.item.price_nontax) * sub.number)
   end
 
-
+  def total_price(totals)
     price = 0
     totals.each do |total|
       price  +=  sub_price(total)

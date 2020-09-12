@@ -17,38 +17,38 @@
     <table class="table cart_table">
       <thead class="cart_thead">
         <tr>
-          <th colspan="2">商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
+          <th colspan="2" class="text-center">商品名</th>
+          <th class="text-center">単価（税込）</th>
+          <th class="text-center">数量</th>
+          <th class="text-center">小計</th>
           <th></th>
         </tr>
       </thead>
       <tbody class="cart_tbody">
         <% sum_all = 0 %>  <!-- sum_all = 合計金額 -->
         <% @cart_items.each do |cart_item| %>
-        <tr>
+        <tr style="font-size: 15px;">
           <td colspan="2",width="120px"><%= attachment_image_tag cart_item.item, :image, :fill, 80, 80 %>  <%= cart_item.item.name %></td>
-          <td>  <%= price_tax(cart_item.item.price_nontax) %></td>
-          <td>
+          <td class="text-right"><%= price_tax(cart_item.item.price_nontax).to_s(:delimited) %></td>
+          <td class="text-right">
             <%= form_with model: cart_item, local: true do |f| %>
               <%= f.number_field :number, value: cart_item.number, min: 1, max: 10 %>
               <%= f.submit "変更", class: "btn btn-primary" %>
             <% end %>
           </td>
-          <td>  <!-- sum_item = 小計 -->
+          <td class="text-right">  <!-- sum_item = 小計 -->
             <%= sum_item = price_tax(cart_item.item.price_nontax).to_i * cart_item.number %>
             <% sum_all += sum_item %>
           </td>
-          <td>
+          <td class="text-center">
             <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
           </td>
         </tr>
         <% end %>
-        <tr>
+        <tr style="font-size: 15px;">
           <td colspan="4">
-          <td class="cart_total"><strong>合計金額</strong></td>
-          <td><%= sum_all %></td>
+          <td class="cart_total text-center"><strong>合計金額</strong></td>
+          <td class="text-right"><%= sum_all %></td>
         </tr>
     </tbody>
     </table>

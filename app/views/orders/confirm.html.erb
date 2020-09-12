@@ -12,20 +12,20 @@
     <div class="col-md-8">
       <table class="table order_confirm_table">
         <thead class="order_thead">
-          <tr>
-            <th colspan="2">商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
+          <tr style="font-size: 15px;">
+            <th colspan="2" class="text-center">商品名</th>
+            <th class="text-center">単価（税込）</th>
+            <th class="text-center">数量</th>
+            <th class="text-center">小計</th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
-          <tr>
+          <tr style="font-size: 15px;">
             <td colspan="2",width="120px"><%= attachment_image_tag cart_item.item, :image, :fill, 50, 50 %>  <%= cart_item.item.name %></td>
-            <td><%= price_tax(cart_item.item.price_nontax) %></td>
-            <td><%= cart_item.number %></td>
-            <td>
+            <td class="text-right"><%= price_tax(cart_item.item.price_nontax).to_s(:delimited) %></td>
+            <td class="text-right"><%= cart_item.number %></td>
+            <td class="text-right">
               <%= sub_price(cart_item).to_s(:delimited) %>
             </td>
           </tr>
@@ -36,17 +36,17 @@
 
     <div class="col-md-4">
       <table class="order_right_table">
-        <tr>
-          <td class="order_right"><strong>　送料</strong></td>
-          <td><%= @order.postage %></td>
+        <tr style="font-size: 15px;">
+          <td class="order_right text-center""><strong>送料</strong></td>
+          <td class="text-right", width="140px"><%= @order.postage %></td>
         </tr>
-        <tr>
-          <td class="order_right"><strong>　商品合計</strong></td>
-          <td><%= total_price(@cart_items).to_s(:delimited) %></td>
+        <tr style="font-size: 15px;">
+          <td class="order_right text-center"><strong>商品合計</strong></td>
+          <td class="text-right", width="140px"><%= total_price(@cart_items).to_s(:delimited) %></td>
         </tr>
-        <tr>
-          <td class="order_right"><strong>　請求金額</strong></td>
-          <td><%= billing_price(@order).to_s(:delimited) %></td>
+        <tr style="font-size: 15px;">
+          <td class="order_right text-center"><strong>請求金額</strong></td>
+          <td class="text-right", width="140px"><%= billing_price(@order).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
