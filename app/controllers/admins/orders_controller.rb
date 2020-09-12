@@ -3,7 +3,7 @@ include ApplicationHelper
   before_action :authenticate_admin!
 
   def index
-  	@orders = Order.all
+  	@order = Order.all.order
   	case params[:order_sort]
   	when "0"
   		@orders = Order.where(created_at: Date.today)
