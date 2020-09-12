@@ -7,6 +7,9 @@
     <div class="col-md-12">
 			<div class="col-md-3 col-md-offset-1">
 				<div class="row">
+					<div id="item-image">
+						<%= attachment_image_tag @item, :image, format: 'jpeg', size:"300x260", fallback: "no_image.png" %>
+					</div>
 					<%= f.attachment_field :image, class: "col-md-12" %>
 				</div>
 			</div>
