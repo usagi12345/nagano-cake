@@ -13,8 +13,8 @@
 			<th>支払い方法</th>
 			<td><%= @order.payment %></td>
 			<th>注文ステータス変更</th>
-				<td><%= form_for(@order, url: admins_order_path) do |f| %>
-					<%= f.select :order_status, options_for_select(Order.order_statuses) %>
+				<td><%= form_for(@order, url: {controller: "orders", action: "update"}) do |f| %>
+					<%= f.select :order_status, [['入金待ち', 0], ['入金確認', 1], ['製作中', 2],['発送準備中', 3], ['発送済み', 4]] %>
 					<%= f.submit '更新', class: "btn btn-sm" %>
 					<% end %>
 				</td>
@@ -40,7 +40,7 @@
 			<td><%= (order_item.price * order_item.number) %></td>
 			<td><%= form_for order_item, url: admins_order_detail_path do |f| %>
 				<%= f.label :production_status, "製作ステータス" %>
-				<%= f.select :production_status, options_for_select(OrderItem.production_statuses) %>
+				<%= f.select :production_status, [['着手不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]], prompt: "-- 選択してください --" %>
 			<%= f.submit "更新", class: "btn btn-sm" %>
 			<% end %>
 		</td>

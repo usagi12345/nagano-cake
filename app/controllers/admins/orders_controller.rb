@@ -20,16 +20,21 @@ end
   end
 
   def update
-    binding.pry
-  	@order = Order.find(params[:id])
-    @order.update(orders_params)
-    redirect_to request.referer
+    if @order.order_items.production_status == 2
+      @order.order_status = 2
+      @order.update
+    elsif @order.order_items.production_status == 3
+        @order.order_status = 3
+        @order.update
+    else
+    @order.update(order_params)
+  end
   end
 
   private
 
   def orders_params
-    params.require(:order).permit(:order_status).merge(order_status: params[:order][:order_status].to_i)
+    params.require(:order).permit(:order_status)
   end
 
 end
