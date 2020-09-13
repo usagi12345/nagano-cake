@@ -17,10 +17,14 @@ class Admins::ItemsController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
   	@item = Item.new(item_params)
-  	@item.save
-    flash[:notice] = "新たに商品が追加されました"
-  	redirect_to admins_items_path
+  	if @item.save
+      flash[:notice] = "新たに商品が追加されました"
+  	  redirect_to admins_items_path
+    else
+      render :new
+    end
   end
 
   def edit
