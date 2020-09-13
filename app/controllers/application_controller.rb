@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
       case resource
       when EndUser
-        items_path
+        root_path
       when Admin
         admins_root_path
       end
@@ -24,7 +24,8 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_out_path_for(resource)
-      new_end_user_session_path  #ログアウト後に遷移するpath
+      new_end_user_session_path 
+       #ログアウト後に遷移するpath
     end
 
 

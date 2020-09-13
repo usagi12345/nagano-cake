@@ -21,7 +21,7 @@ class Admins::ItemsController < ApplicationController
   	@item = Item.new(item_params)
   	if @item.save
       flash[:notice] = "新たに商品が追加されました"
-  	  redirect_to admins_items_path
+  	  redirect_to admins_item_path(@item)
     else
       render :new
     end
