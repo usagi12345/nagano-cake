@@ -30,7 +30,7 @@
 						<%= link_to item.name, admins_item_path(item.id) %>
 					</td>
 					<td>
-						<%= item.price_nontax %>
+						<%= item.price_nontax.to_s(:delimited) %>
 					</td>
 					<td>
 						<%= item.genre.name %>

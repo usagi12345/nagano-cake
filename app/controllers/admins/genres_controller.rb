@@ -14,12 +14,14 @@ class Admins::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genre.save
+    flash[:notice] = "新たにジャンルが追加されました"
     redirect_to admins_genres_path
   end
 
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
+      flash[:notice] = "ジャンル情報を更新しました"
       redirect_to admins_genres_path
     else
       render :edit

@@ -17,6 +17,7 @@ class Admins::EndUsersController < ApplicationController
   def update
     @user = EndUser.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "会員情報を更新しました"
       redirect_to admins_end_users_path
     else
       render :edit

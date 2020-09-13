@@ -6,6 +6,7 @@ class Admins::OrderDetailsController < ApplicationController
   	@order_item = OrderItem.find(params[:order_item][:id])
     @order_item.update(order_detail_params)
     # OrderItem after_update => 注文ステータスの自動更新
+    flash[:notice] = "ステータスを更新しました"
     redirect_to request.referer
   end
 
