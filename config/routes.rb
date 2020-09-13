@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
 	devise_for :end_users, skip: :all
 
-  devise_scope :end_users do
+  devise_scope :end_user do
+    get 'end_users/sign_up', to: 'end_users/registrations#new', as: :new_end_user_registration
+    post 'end_users/sign_up', to: 'end_users/registrations#create', as: :end_user_registration
     post 'end_users/registration', to: 'end_users/registrations#edit'
     patch 'end_users/registration', to: 'end_users/registrations#update'
     put 'end_users/registration', to: 'end_users/registrations#update'
