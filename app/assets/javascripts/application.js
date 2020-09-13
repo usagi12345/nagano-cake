@@ -16,6 +16,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+$(document).on('turbolinks:load', function() {
 $(function(){
     // inputのidから情報の取得
     $('#item_image').on('change', function (e) {
@@ -26,5 +27,6 @@ $(function(){
     }
 	// ここまで
     reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+});
 });
 });
