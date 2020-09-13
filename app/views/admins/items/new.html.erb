@@ -4,6 +4,7 @@
 	</div>
 
   <%= form_for(@item, url: admins_items_path) do |f| %>
+  <!-- エラーメッセージ -->
   <%= render 'layouts/error_messages', model: f.object %>
     <div class="col-md-12">
 			<div class="col-md-3 col-md-offset-1">

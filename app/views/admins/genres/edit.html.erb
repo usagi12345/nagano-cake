@@ -2,6 +2,8 @@
   <div class="col-md-10 col-md-offset-1">
   	<h4><mark>ジャンル編集</mark></h4>
 		<%= form_for(@genre, url: admins_genre_path) do |f| %>
+        <!-- エラーメッセージ -->
+    <%= render 'layouts/error_messages', model: f.object %>
 			<div class="form-group">
 				<div class="row"  style="font-size: 18px;">
 					<strong>ジャンル</strong>

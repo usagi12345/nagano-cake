@@ -12,8 +12,11 @@ class EndUsersController < ApplicationController
 
   def update
     @user = current_end_user
-    @user.update(end_user_params)
-    redirect_to end_users_path
+    if @user.update(end_user_params)
+      redirect_to end_users_path
+    else
+      render end_users_end_users_edit_path
+    end
   end
 
   def withdraw
