@@ -1,12 +1,15 @@
-<div style="margin-top: 50px;">
-	<div style="margin-left: 250px;">
+<div class="row">
+	<div class="col-md-2 col-md-offset-2">
+		<div class="top" style="font-size: 30px;">
 		<p><mark>管理者画面</mark></p>
 	</div>
-</div>
-<div style="margin-top: 50px;">
-	<div style="margin-left: 100px;">
-		<p>本日の注文件数: <%= link_to (@orders.count), admins_orders_path(order_sort: 0) %>件</p>
-		<!-- 注文件数をカウントする -->
-		<!-- その日1日だけの注文件数の表示のさせ方 -->
 	</div>
 </div>
+<div class="row" style="margin-top: 70px;">
+	<div class="col-md-3 col-md-offset-1">
+		<div class="today_orders" style="font-size: 25px;">
+<p>本日の注文件数: <%= link_to (@orders.count), admins_orders_path(order_sort: 0) %>件</p>
+</div>
+</div>
+		<!-- 注文件数をカウントする -->
+		<!-- その日1日だけの注文件数の表示のさせ方 -->
