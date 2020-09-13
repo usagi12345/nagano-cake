@@ -62,7 +62,7 @@ class EndUsers::RegistrationsController < Devise::RegistrationsController
   protected
   # 追記する
   def after_update_path_for(resource)
-    end_users_path(resource)
+    end_users_end_users_edit_path
   end
   def update_resource(resource, params)
     resource.update_without_password(params)

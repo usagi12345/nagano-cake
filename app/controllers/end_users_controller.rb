@@ -13,9 +13,10 @@ class EndUsersController < ApplicationController
   def update
     @user = current_end_user
     if @user.update(end_user_params)
+      flash[:notice] = "会員情報を更新しました"
       redirect_to end_users_path
     else
-      render end_users_end_users_edit_path
+      render :edit
     end
   end
 
@@ -36,15 +37,15 @@ class EndUsersController < ApplicationController
   def password_edit
     @user = current_end_user
   end
+  
   def password_update
     @user = current_end_user
     @user.update(end_user_params)
-    flash[:notice] = "パスワードを変更しました"
     redirect_to end_users_path
   end
 
   private
   def end_user_params
     params.require(:end_user).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :email,  :phone, :is_deleted, :password)
-end
+  end
 end

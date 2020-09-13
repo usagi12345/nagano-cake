@@ -3,7 +3,7 @@
 		<h4><mark>登録情報編集</mark></h4>
 	</div>
 </div>
-<%= form_for(@user, url: end_users_path) do |f| %>
+<%= form_for(@user, url: end_users_path, method: :patch) do |f| %>
 <!-- エラーメッセージ -->
 <%= render 'layouts/error_messages', model: f.object %>
 <div class="row">

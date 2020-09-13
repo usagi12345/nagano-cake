@@ -2,12 +2,25 @@ Rails.application.routes.draw do
 
   root 'home#top'
 	get 'about' => 'home#about'
+  get 'end_users/end_users/edit' => 'end_users#edit'
 
-	devise_for :end_users, controllers: {
-    sessions: 'end_users/sessions',
-    passwords: 'end_users/passwords',
-    registrations: 'end_users/registrations'
-  }
+	devise_for :end_users, skip: :all
+
+  devise_scope :end_users do
+    post 'end_users/registration', to: 'end_users/registrations#edit'
+    patch 'end_users/registration', to: 'end_users/registrations#update'
+    put 'end_users/registration', to: 'end_users/registrations#update'
+    delete 'end_users/registration', to: 'end_users/registrations#destroy'
+    get 'end_users/sign_in', to: 'end_users/sessions#new', as: :new_end_user_session
+    post 'end_users/sign_in', to: 'end_users/sessions#create', as: :end_user_session
+    delete 'end_users/sign_out', to: 'end_users/sessions#destroy', as: :destroy_end_user_session
+    get 'end_users/password/new', to: 'end_users/passwords#new', as: :new_end_user_password
+    post 'end_users/password', to: 'end_users/passwords#create'
+    get 'end_users/password/edit', to: 'end_users/passwords#edit', as: :edit_end_user_password
+    patch 'end_users/password', to: 'end_users/passwords#update'
+    put 'end_users/password', to: 'end_users/passwords#update'
+
+  end
 
   resources :genres, only: [:show]
 	resources :items, only: [:index, :show]
@@ -23,7 +36,6 @@ Rails.application.routes.draw do
 	post 'orders/confirm' => 'orders#confirm'
 	get 'orders/thanks' => 'orders#thanks'
 	resource :end_users, only: [:show, :update]
-  get 'end_users/end_users/edit' => 'end_users#edit'
   get 'end_users/end_users/password_edit' => 'end_users#password_edit'
   put 'end_users/end_users/password_edit' => 'end_users#password_update'
 
