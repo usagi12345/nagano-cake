@@ -17,14 +17,12 @@
   <div class="col-md-3 col-md-offset-2">
     <div class="row">
       <div class="radio-inline">
-        <%= f.radio_button :payment, :クレジットカード, checked: "checked" %>
-        <%= f.label :クレジットカード, class: "payment_label" %>
+        <label style="font-size: 15px;"><%= f.radio_button :payment, :クレジットカード, checked: "checked" %>クレジットカード</label>
       </div>
     </div>
     <div class="row">
       <div class="radio-inline">
-        <%= f.radio_button :payment, :銀行振込 %>
-        <%= f.label :銀行振込, class: "payment_label" %>
+        <label style="font-size: 15px;"><%= f.radio_button :payment, :銀行振込 %>銀行振込</label>
       </div>
     </div><br>
   </div>
@@ -40,7 +38,7 @@
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
       <div class="row">
-        <label><%= f.radio_button :add, 1, checked: "checked" %>ご自身の住所</label><br>
+        <label style="font-size: 15px;"><%= f.radio_button :add, 1, checked: "checked" %>ご自身の住所</label><br>
         <%= @end_user.postal_code %><%= @end_user.address %><br>
         <%= @end_user.first_name %><%= @end_user.last_name %>
       </div>
@@ -52,7 +50,7 @@
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
       <div class="row">
-        <label><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
+        <label style="font-size: 15px;"><%= f.radio_button :add, 2 %>登録済み住所から選択</label>
       </div>
       <div class="row">
         <%= f.collection_select :addresses, @deliveries, :id, :delivery_all, class: "send-form" %>
@@ -65,7 +63,7 @@
   <div class="col-md-10 col-md-offset-2">
     <div class="radio-inline">
       <div class="row">
-        <label><%= f.radio_button :add, 3 %>新しいお届け先</label>
+        <label style="font-size: 15px;"><%= f.radio_button :add, 3 %>新しいお届け先</label>
       </div>
     </div>
   </div>

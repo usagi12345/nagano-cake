@@ -47,6 +47,9 @@
       </header>
 
       <main class="container">
+        <% if flash[:notice] %>
+          <div class="alert alert-success alert-dismissible"><%= flash[:notice] %></div>
+        <% end %>
         <div id="main_wrapper">
           <%= yield %>
         </div>

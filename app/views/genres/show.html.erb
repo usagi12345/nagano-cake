@@ -13,7 +13,7 @@
               <%= attachment_image_tag item, :image, format: 'jpeg', size:"200x150" %>
               <p><%= item.name %></p>
             <% end %>
-            <p>￥<%= item.price_nontax %>(税抜)</p>
+            <p>￥<%= item.price_nontax.to_s(:delimited) %>(税抜)</p>
           <% elsif item.sale_status == false %>
             <%= attachment_image_tag item, :image, format: 'jpeg', size:"200x150" %>
             <p><%= item.name %></p>

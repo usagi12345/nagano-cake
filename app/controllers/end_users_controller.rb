@@ -35,7 +35,8 @@ class EndUsersController < ApplicationController
   end
   def password_update
     @user = current_end_user
-     @user.update(end_user_params)
+    @user.update(end_user_params)
+    flash[:notice] = "パスワードを変更しました"
     redirect_to end_users_path
   end
 

@@ -29,6 +29,7 @@ include ApplicationHelper
     @order = Order.find(params[:id])
     @order.update(order_params)
     # Orderモデルの方でafter_update　＝＞製作ステータスの自動更新
+    flash[:notice] = "ステータスを更新しました"
     redirect_to admins_order_path(@order)
   end
 
