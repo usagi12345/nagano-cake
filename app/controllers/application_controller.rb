@@ -23,9 +23,13 @@ class ApplicationController < ActionController::Base
       end  # Sign_Up後に遷移するpath
     end
 
-    def after_sign_out_path_for(resource)
-      new_end_user_session_path 
-       #ログアウト後に遷移するpath
+    def after_sign_out_path_for(resource)#ログアウト後に遷移するpath
+      case resource
+      when EndUser
+        new_end_user_session_path
+      when Admin
+        new_admin_session_path
+      end
     end
 
 
