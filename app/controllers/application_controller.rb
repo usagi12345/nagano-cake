@@ -22,15 +22,8 @@ class ApplicationController < ActionController::Base
         admins_root_path
       end  # Sign_Up後に遷移するpath
     end
-    # def after_sign_out_path_for(resource)
-    #   if end_user
-    #     root_path
-    #   else
-    #    new_admin_session_path
-    #   end
-    #        #ログアウト後に遷移するpath
-    #     end
-    def after_sign_out_path_for(resource_or_scope)
+
+    def after_sign_out_path_for(resource_or_scope)　　#ログアウト後に遷移するpath
     return new_admin_session_path if resource_or_scope == :admin
     root_path
   end
