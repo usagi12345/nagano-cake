@@ -35,7 +35,7 @@
 </div>
 	<!-- 上段ここまで -->
 <!-- 左下ここから -->
-<div class="row">
+<div class="row" style="margin-top: 50px;">
 	<div class="col-md-7 col-md-offset-1">
 	<table class="table">
 		<tr style="background: rgba(0,0,0,0.2);">
@@ -48,9 +48,9 @@
 		<% @order.order_items.each do |order_item| %>
 		<tr style="font-size: 18px;">
 			<td><%= order_item.item.name %></td>
-			<td><%= order_item.item.price_nontax %></td>
+			<td><%= price_tax(order_item.item.price_nontax) %></td>
 			<td><%= order_item.number %></td>
-			<td><%= (order_item.price * order_item.number) %></td>
+			<td><%= (order_item.price * order_item.number).to_s(:delimited) %></td>
 			<td><%= form_for order_item, url: admins_order_detail_path do |f| %>
 				<%= f.hidden_field :id, :value => order_item.id %>
 				<%= f.label :production_status, "製作ステータス" %>
