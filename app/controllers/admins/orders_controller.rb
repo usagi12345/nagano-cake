@@ -22,7 +22,6 @@ include ApplicationHelper
 
   def show
   	@order = Order.find(params[:id])
-    # binding.pry
   end
 
   def update
