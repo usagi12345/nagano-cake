@@ -48,7 +48,7 @@
 		<% @order.order_items.each do |order_item| %>
 		<tr style="font-size: 18px;">
 			<td><%= order_item.item.name %></td>
-			<td><%= price_tax(order_item.item.price_nontax) %></td>
+			<td><%= price_tax(order_item.item.price_nontax).to_s(:delimited) %></td>
 			<td><%= order_item.number %></td>
 			<td><%= (order_item.price * order_item.number).to_s(:delimited) %></td>
 			<td><%= form_for order_item, url: admins_order_detail_path do |f| %>
