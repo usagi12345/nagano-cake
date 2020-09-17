@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       end  # Sign_Up後に遷移するpath
     end
 
-    def after_sign_out_path_for(resource_or_scope)　　#ログアウト後に遷移するpath
+    def after_sign_out_path_for(resource_or_scope)  #ログアウト後に遷移するpath
     return new_admin_session_path if resource_or_scope == :admin
     root_path
   end
